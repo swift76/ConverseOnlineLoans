@@ -1,0 +1,61 @@
+﻿<div class="tab-pane fade in" data-bind="disabled: !isEditable()">
+    <div class="" id="form">
+        <div class="row">
+            <div data-bind="disabled: pendingPhoneVerification">
+                <div class="col-lg-10 col-md-10 col-sm-12">
+                    <h2>Քարտով նույնականացում</h2>
+                </div>
+                <div data-bind="validationError: {value: validationErrors, propertyName: 'cardGroup'}">
+                    <div class="col-lg-10 col-md-10 col-sm-12">
+                        <div class="form-group">
+                            <label for="text">Վարկը տրամադրելու համար խնդրում ենք լրացնել Ձեր քարտի տվյալները։ Քարտի տվյալներն անհրաժեշտ են Ձեզ նույնականացնելու և վարկային պայմանագիրը կնքելու համար։</label>
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <div class="form-group">
+                            <label for="text">Մուտքագրեք քարտի համարը</label>
+                            <input type="text" class="form-control" data-bind="numericInput: {value: cardNumber, isNumber: false},
+                                   validationError: {value: validationErrors, propertyName: 'cardNumber'}" maxlength="16">
+                        </div>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-12 expiration-date">
+                        <div class="form-group">
+                            <label for="text">Վավերականության ժամկետը</label>
+                            <div class="clearfix"></div>
+                            <div class="customselect" data-bind="with: cardExpireMonths">
+                                <select data-bind="options: objectsList, optionsText: 'NAME', optionsValue: 'CODE',
+                                        value: $parent.cardExpireMonth, optionsCaption: ' ',
+                                        validationError: {value: $parent.validationErrors, propertyName: 'cardExpireMonth'}"></select>
+                            </div>
+                            <div class="customselect" data-bind="with: cardExpireYears">
+                                <select data-bind="options: objectsList, optionsText: 'NAME', optionsValue: 'CODE',
+                                        value: $parent.cardExpireYear, optionsCaption: ' ',
+                                        validationError: {value: $parent.validationErrors, propertyName: 'cardExpireYear'}"></select>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-lg-10 col-md-10 col-sm-12 actions">
+                    <button class="btn btn-success" data-bind="click: function() { $parent.action('checkCard'); }">Հաստատել</button>
+                </div>
+            </div>
+            <div data-bind="visible: pendingPhoneVerification">
+                <div class="col-lg-10 col-md-10 col-sm-12 separate15">
+                    Խնդրում ենք մուտքագրել Ձեր՝ Բանկում գրանցված բջջային հեռախոսահամարին ուղարկված գաղտնաբառը։
+                </div>
+                <div class="col-lg-5 col-md-5 col-sm-12" data-bind="validationError: {value: validationErrors, propertyName: 'SMSGroup'}">
+                    <div class="form-group">
+                        <label for="text">Մուտքագրեք նույնականացման կոդը</label>
+                        <input type="text" class="form-control" maxlength="4" data-bind="numericInput: {value: smsCode, isNumber: false},
+                               validationError: {value: validationErrors, propertyName: 'smsCode'}">
+                    </div>
+                </div>
+                <div class="col-lg-10 col-md-10 col-sm-12 actions">
+                    <button class="btn btn-default" data-bind="click: function() { $parent.action('sendSMS'); }">Կրկին ուղարկել</button>
+                    <button class="btn btn-success" data-bind="click: function() { $parent.action('submitSMSCode'); }">Շարունակել</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

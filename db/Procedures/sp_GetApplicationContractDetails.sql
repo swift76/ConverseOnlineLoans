@@ -1,0 +1,99 @@
+if exists (select * from sys.objects where name='sp_GetApplicationContractDetails' and type='P')
+	drop procedure dbo.sp_GetApplicationContractDetails
+GO
+
+create procedure dbo.sp_GetApplicationContractDetails(@ID	uniqueidentifier)
+AS
+select a.CREATION_DATE,
+	a.CLIENT_CODE,
+	n.FIRST_NAME,
+	n.LAST_NAME,
+	n.PATRONYMIC_NAME,
+	a.FIRST_NAME_EN,
+	a.LAST_NAME_EN,
+	a.DOCUMENT_NUMBER,
+	case a.DOCUMENT_TYPE_CODE
+		when '2' then n.ID_CARD_ISSUED_BY
+		when '3' then n.BIOMETRIC_PASSPORT_ISSUED_BY
+		else n.NON_BIOMETRIC_PASSPORT_ISSUED_BY
+	end as DOCUMENT_GIVEN_BY,
+	case a.DOCUMENT_TYPE_CODE
+		when '2' then n.ID_CARD_ISSUE_DATE
+		when '3' then n.BIOMETRIC_PASSPORT_ISSUE_DATE
+		else n.NON_BIOMETRIC_PASSPORT_ISSUE_DATE
+	end as DOCUMENT_GIVEN_DATE,
+	case a.DOCUMENT_TYPE_CODE
+		when '2' then n.ID_CARD_EXPIRY_DATE
+		when '3' then n.BIOMETRIC_PASSPORT_EXPIRY_DATE
+		else n.NON_BIOMETRIC_PASSPORT_EXPIRY_DATE
+	end as DOCUMENT_EXPIRY_DATE,
+	a.SOCIAL_CARD_NUMBER,
+	n.BIRTH_DATE,
+	bc.NAME_AM as BIRTH_PLACE_NAME,
+	nc.NAME_AM as CITIZENSHIP_COUNTRY_NAME,
+	'' as FAMILY_STATUS,
+	rc.NAME_AM as REGISTRATION_COUNTRY_NAME,
+	rcty.NAME_AM as REGISTRATION_CITY_NAME,
+	rst.NAME_AM as REGISTRATION_STATE_NAME,
+	a.REGISTRATION_STREET,
+	a.REGISTRATION_BUILDNUM,
+	a.REGISTRATION_APARTMENT,
+	cc.NAME_AM as CURRENT_COUNTRY_NAME,
+	ccty.NAME_AM as CURRENT_CITY_NAME,
+	cst.NAME_AM as CURRENT_STATE_NAME,
+	a.CURRENT_STREET,
+	a.CURRENT_BUILDNUM,
+	a.CURRENT_APARTMENT,
+	a.FIXED_PHONE,
+	a.MOBILE_PHONE_1,
+	a.MOBILE_PHONE_2,
+	a.EMAIL,
+	a.COMPANY_NAME,
+	'' as ORGANIZATION_ACTIVITY_NAME,
+	a.COMPANY_PHONE,
+	a.POSITION,
+	we.NAME_AM as WORKING_EXPERIENCE_NAME,
+	sal.NAME_AM as MONTHLY_INCOME_NAME,
+	a.INITIAL_AMOUNT,
+	a.REPAY_DAY,
+	a.FINAL_AMOUNT,
+	a.PERIOD_TYPE_CODE as PERIOD_TYPE_NAME,
+	a.INTEREST,
+	ll.NAME_AM as CURRENCY_NAME,
+	coalesce(a.IS_NEW_CARD, 0) as IS_NEW_CARD,
+	case when coalesce(a.IS_NEW_CARD, 0) = 0 then a.EXISTING_CARD_CODE else null end as EXISTING_CARD_CODE,
+	case when coalesce(a.IS_NEW_CARD, 0) = 1 then ct.NAME_AM else null end as NEW_CARD_TYPE_NAME,
+	case when coalesce(a.IS_NEW_CARD, 0) = 1 and coalesce(a.IS_CARD_DELIVERY, 0) = 0 then bb.NAME_AM else null end as CARD_DELIVERY_BANK_BRANCH_NAME,
+	case when coalesce(a.IS_NEW_CARD, 0) = 1 and coalesce(a.IS_CARD_DELIVERY, 0) = 1 then a.CARD_DELIVERY_ADDRESS else null end as CARD_DELIVERY_ADDRESS,
+	a.COMMUNICATION_TYPE_CODE
+from dbo.APPLICATION a
+join dbo.COUNTRY rc
+	on a.REGISTRATION_COUNTRY_CODE = rc.CODE
+join dbo.STATE rst
+	on a.REGISTRATION_STATE_CODE = rst.CODE
+join dbo.CITY rcty
+	on a.REGISTRATION_CITY_CODE = rcty.CODE
+join dbo.COUNTRY cc
+	on a.CURRENT_COUNTRY_CODE = cc.CODE
+join dbo.STATE cst
+	on a.CURRENT_STATE_CODE = cst.CODE
+join dbo.CITY ccty
+	on a.CURRENT_CITY_CODE = ccty.CODE
+join dbo.COUNTRY nc
+	on a.CITIZENSHIP_CODE = nc.CODE
+join dbo.COUNTRY bc
+	on a.BIRTH_PLACE_CODE = bc.CODE
+join dbo.LOAN_LIMIT ll
+	on a.LOAN_TYPE_ID = ll.LOAN_TYPE_CODE and a.CURRENCY_CODE = ll.CURRENCY
+left join dbo.WORKING_EXPERIENCE we
+	on a.WORKING_EXPERIENCE_CODE = we.CODE
+left join dbo.MONTHLY_NET_SALARY sal
+	on a.MONTHLY_INCOME_CODE = sal.CODE
+left join dbo.BANK_BRANCH bb
+	on a.BANK_BRANCH_CODE = bb.CODE
+left join dbo.CREDIT_CARD_TYPE ct
+	on a.LOAN_TYPE_ID = ct.LOAN_TYPE_ID and a.CREDIT_CARD_TYPE_CODE = ct.CODE
+join NORQ_QUERY_RESULT n
+	on a.ID = n.APPLICATION_ID
+where a.ID = @ID
+GO

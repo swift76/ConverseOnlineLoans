@@ -1,0 +1,12 @@
+if exists (select * from sys.objects where name='CUSTOMER_STATUS' and type='U')
+	drop table dbo.CUSTOMER_STATUS
+GO
+
+CREATE TABLE dbo.CUSTOMER_STATUS (
+	ID 			tinyint IDENTITY(1,1)	NOT NULL,
+	DESCRIPTION	nvarchar(50)			NOT NULL
+)
+GO
+
+CREATE UNIQUE CLUSTERED INDEX iCUSTOMER_STATUS1 ON dbo.CUSTOMER_STATUS(ID)
+GO

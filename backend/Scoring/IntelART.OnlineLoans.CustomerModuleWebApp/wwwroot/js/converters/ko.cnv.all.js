@@ -1,0 +1,3 @@
+﻿define([
+    './ko.loanTypeHint',
+], function () { });

@@ -1,0 +1,13 @@
+if exists (select * from sys.objects where name='COMMUNICATION_TYPE' and type='U')
+	drop table dbo.COMMUNICATION_TYPE
+GO
+
+CREATE TABLE dbo.COMMUNICATION_TYPE (
+	CODE 	char(1)			NOT NULL,
+	NAME_AM	nvarchar(50)	NOT NULL,
+	NAME_EN	varchar(50)		NOT NULL
+)
+GO
+
+CREATE UNIQUE CLUSTERED INDEX iCOMMUNICATION_TYPE1 ON dbo.COMMUNICATION_TYPE(CODE)
+GO

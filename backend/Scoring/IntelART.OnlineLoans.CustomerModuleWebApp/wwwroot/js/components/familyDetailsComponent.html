@@ -1,0 +1,24 @@
+﻿    <div data-bind="with: model">
+        <div data-bind="disabled: !isEditable()">
+            <div class="clearfix"></div>
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <div class="form-group">
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <h2>Ընտանիքի տվյալներ</h2>
+                    </div>
+                    <div class="col-lg-5 col-md-5 col-sm-12">
+                        <div class="form-group">
+                            <label for="text">Ընտանեկան դրություն <span class="mandatory">*</span></label>
+                            <div class="customselect" data-bind="with: maritalStatuses">
+                                <select data-bind="options: items, optionsText: 'NAME', optionsValue: 'CODE',
+                                                   optionsCaption: $parent.listInitialCaption().dynamicOptionsCaption(), 
+                                                    validationError: {value: $parent.validationErrors, propertyName: 'familyStatusCode'},
+                                                    delayBind: {waitUntil: items() && items().length, bind: 'value: $parent.familyStatusCode'}"></select>
+                                <div class="busyIndicatorOverlay" data-bind="visible: !items.loaded()"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>

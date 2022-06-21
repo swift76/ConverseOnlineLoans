@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ConverseBank</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/default.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <div class="container_fluid">
+
+        <header>
+            <a href="#" class="burger"></a>
+            <span class="close-menu"></span>
+            <a class="logo" href="index.html"><img src="img/logo.svg"></a>
+        </header>
+
+        <div class="sidebar">
+            <ul>
+                <li class="active"><a href="index.html"><span class="ico hayter"></span>Վարկի Հայտեր</a></li>
+                <li class="separator"></li>
+                <li><a href="resetpasspage.html"><span class="ico password"></span>Փոխել գաղտնաբառը</a></li>
+                <li><a href="login.html"><span class="ico logout"></span>Ելք համակարգից</a></li>
+            </ul>
+        </div>
+
+        <div class="content_body">
+            <div class="vizard">
+                <ul>
+                    <li class="current"><span class="step">1</span><a href="hayt-1.html">Նոր վարկի հայտ</a></li>
+                    <li class="current"><span class="step">2</span><a href="hayt-2.html">Վարկի տվյալներ</a></li>
+                    <li class="current"><span class="step">3</span>Պայմանագրի տվյալներ</li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>Պայմանագրի տվյալներ</h1>
+
+                            <div class="form-group">
+                                <label for="">Վարկի անվանում</label>
+                                <input type="text" class="form-control" disabled id="" value="Սպառողական">
+                            </div>
+
+                            <div class="tandem">
+                                <div class="form-group">
+                                    <label for="">Վարկի գումար</label>
+                                    <input type="text" class="form-control" disabled id="" value="1,000,000">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Վարկի ժամկետ</label>
+                                    <input type="text" class="form-control" disabled id="" value="24 ամիս">
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="tandem">
+                                <div class="form-group">
+                                    <label for="">Տարեկան տոկոսադրույք</label>
+                                    <input type="text" class="form-control" disabled id="" value="13%">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Փաստացի տոկոսադրույք</label>
+                                    <input type="text" class="form-control" disabled id="" value="13.8%">
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="tandem">
+                                <div class="form-group">
+                                    <label for="">Ամսական վճարվող գումար</label>
+                                    <input type="text" class="form-control" disabled id="" value="14,000">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Առաջին վճարվող գումար</label>
+                                    <input type="text" class="form-control" disabled id="" value="2,000">
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="tandem">
+                                <div class="form-group">
+                                    <label for="">Առաջին վճարման մայր գումար</label>
+                                    <input type="text" class="form-control" disabled id="" value="12,000">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Ընդամենը վճարվող գումար</label>
+                                    <input type="text" class="form-control" disabled id="" value="290,000">
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="tandem">
+                                <div class="form-group">
+                                    <label for="">Ընդամենը վճարվող տոկոսագումար</label>
+                                    <input type="text" class="form-control" disabled id="" value="40,000">
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="checkbox">
+                                <label class="customcheck"> Հաստատում եմ, որ ծանոթացել եմ եւ համաձայն եմ վարկի
+                                    <ul>
+                                        <li><a href="#">էական պայմանների անհատական թերթիկին</a></li>
+                                        <li><a href="#">վարկային պայմանագրով սահմանված բոլոր պայմաններին։</a></li>
+                                    </ul>
+                                    <input type="checkbox" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+
+
+                            <button class="btn btn-success">Հաստատել</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<span class="overlay"></span>
+
+</body>
+</html>

@@ -1,0 +1,17 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:5008/",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "IntelART.ConverseBank.ShopRestApi": {
+      "commandName": "Project",
+      "environmentVariables": {},
+      "applicationUrl": "http://localhost:5008/"
+    }
+  }
+}

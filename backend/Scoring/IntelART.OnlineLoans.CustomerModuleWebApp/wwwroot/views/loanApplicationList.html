@@ -1,0 +1,33 @@
+﻿<div class="col-lg-12 col-md-12 col-sm-12">
+    <a href="#" data-bind="click: function(){$parent.selectNewApplicationView()}, localizedText: 'VIEW.LOAN_APP'" class="btn btn-success addnew">Դիմել նոր վարկի</a>
+    <h2>Հայտեր</h2>
+</div>
+<table class="display datatable" cellspacing="0" width="100%">
+    <thead>
+        <tr>
+            <th class="table-header">Վարկատեսակ</th>
+            <th class="table-header" type="date">Դիմումի ամսաթիվ</th>
+            <th class="table-header">Հայտի գումար</th>
+            <th class="table-header">Կարգավիճակ</th>
+            <th class="table-header">Գործողություն</th>
+        </tr>
+    </thead>
+    <tbody data-bind="ui-DataTableRows: items">
+        <tr data-bind="click: function(){$root.openApplication(ID);}">
+            <td data-bind="text: LOAN_TYPE_AM"></td>
+            <td data-bind="formattedDate: CREATION_DATE"></td>
+            <td data-bind="text: DISPLAY_AMOUNT"></td>
+            <td data-bind="text: STATUS_AM, css: $parent.selectStatusClass(STATUS_STATE)"></td>
+            <td>
+                <a title="Ջնջել" class="delete-loan-btn" data-bind="confirmation : {message: 'Դուք պատրաստվում եք վերացնել հայտը։ Սեղմեք &quot;Վերացնել&quot;, եթե համաձայն եք, այլապես սեղմեք &quot;Փակել&quot;։', title: 'Վերացնում', confirmButton: 'Վերացնել', confirm: function(){ $parent.deleteApplication(ID); }},attr: {'data-appid': ID}, visible: STATUS_STATE == 'NEW'" style="cursor:pointer;"><i class="fa fa-trash-o fa-2x" aria-hidden="true"></i></a>
+                <a title="Չեղարկել" class="cancel-loan-btn" data-bind="confirmation : {message: 'Դուք պատրաստվում եք չեղարկել հայտը։ Սեղմեք &quot;Չեղարկել&quot;, եթե համաձայն եք, այլապես սեղմեք &quot;Փակել&quot;։', title: 'Չեղարկում',confirmButton: 'Չեղարկել', confirm: function(){ $parent.cancelApplication(ID); }}, attr: {'data-appid': ID}, visible: STATUS_STATE == 'PENDING_PRE_APPROVAL' || STATUS_STATE == 'PENDING_APPROVAL' || STATUS_STATE == 'PRE_APPROVAL_SUCCESS' || STATUS_STATE == 'APPROVAL_SUCCESS' || STATUS_STATE == 'AGREED'" style="cursor:pointer;"><i class="fa fa-times-circle fa-2x" aria-hidden="true"></i></a>
+                <a title="Դիտել պայմանագիրը" data-bind="click: function(){ $parent.printApplication(ID); },clickBubble: false,visible: PRINT_EXISTS" style="cursor:pointer;"><i class="fa fa-print fa-2x" aria-hidden="true"></i></a>
+                <a title="Մոտեցեք մասնաճյուղ" data-bind="click: function(){ $parent.visitOffice(); },clickBubble: false,visible: STATUS_STATE == 'APPROVAL_REVIEW'"  class="btn btn-danger btn-sm" ><i class="fa fa-info-circle" aria-hidden="true"></i> Մոտեցեք մասնաճյուղ</a>
+            </td>
+            
+        </tr>
+    </tbody>
+</table>
+<!--<a href="/pdf/Terms_and_Conditions_of_Personal_Profile_Opening_and_Maintenance.pdf" target="_blank">Անձնական էջի բացման և սպասարկման Պայմաններ և Կանոններ</a>-->
+<!-- <div data-bind="text: statusClass"></div> -->
+<div class="busyIndicatorOverlay" data-bind="visible: !items.loaded()"></div>

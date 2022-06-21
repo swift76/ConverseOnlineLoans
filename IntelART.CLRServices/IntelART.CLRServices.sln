@@ -1,0 +1,27 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.26730.16
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "IntelART.CLRServices", "IntelART.CLRServices\IntelART.CLRServices.sqlproj", "{44BAB9B2-92D1-45B7-A439-8062C57D75D7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{44BAB9B2-92D1-45B7-A439-8062C57D75D7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{44BAB9B2-92D1-45B7-A439-8062C57D75D7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{44BAB9B2-92D1-45B7-A439-8062C57D75D7}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{44BAB9B2-92D1-45B7-A439-8062C57D75D7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{44BAB9B2-92D1-45B7-A439-8062C57D75D7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{44BAB9B2-92D1-45B7-A439-8062C57D75D7}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {220583BE-B33B-4487-87CA-0EE5D17A2354}
+	EndGlobalSection
+EndGlobal

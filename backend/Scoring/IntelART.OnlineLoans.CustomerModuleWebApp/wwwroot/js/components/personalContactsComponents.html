@@ -1,0 +1,14 @@
+﻿<div data-bind="with: model">
+    <div data-bind="disabled: !isEditable()">
+        <div class="col-lg-5 col-md-5 col-sm-12">
+            <div class="form-group">
+                <label for="email">Էլ. հասցե <span class="mandatory">*</span></label>
+                <input type="text" data-bind="event: { blur: (data, event) => { if($parent.validator) {$parent.validator.validate('email', data, event);}}},
+                                              value: email,                                                 
+                                              disabled: emailAlreadyExists(),
+                                              validationError: {value: validationErrors, propertyName: 'email'}" 
+                                              req="true" vtype="email" class="form-control" id="persInfoEmail">
+            </div>
+        </div>
+    </div>
+</div>

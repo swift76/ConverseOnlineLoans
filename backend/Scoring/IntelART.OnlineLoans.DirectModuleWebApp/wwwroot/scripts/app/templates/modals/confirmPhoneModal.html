@@ -1,0 +1,32 @@
+<div id="confirm-phone-number" class="modal">
+    <div class="modal__top">
+        Հարգելի Հաճախորդ, մեկանգամյա օգտագործման կոդը
+        Դուք կստանաք <span data-bind="text: phonoToShow()"></span> հեռախոսահամարին ուղարկված
+        հաղորդագրության միջոցով:
+    </div>
+
+    <div class="form__group form-group" data-bind="validationElement: values().code">
+        <label for="" class="form__label">Մուտքագրել վերիֆիկացման կոդը</label>
+        <span class="error-validate__message" data-bind="text: verifyErrorMsg"></span>
+        <span class="success-validate__message" data-bind="text: verifySuccessMsg"></span>
+        <input type="text" maxlength="4" class="form__control form__control--bg-light"
+               data-bind="value: values().code, restrictRegex: /^[0-9]*$/, valueUpdate: ['afterkeydown', 'input']">
+        <div class="margin--top-5">
+            <a href="" class="link--blue"
+               data-bind="click: function () {sendCodeAgain()}, if: canTry">
+                <strong>Ուղարկել կրկին</strong>
+            </a>
+        </div>
+    </div>
+
+    <div class="align--right">
+        <button class="btn btn--bg-orange btn--size-lg btn--mobile-block"
+                data-bind="visible: !canNotSubmit(), click: function () {verify()}, attr: {'disabled': !values().code.isValid()}, css: {'btn--bg-blue': values().code.isValid}">
+            <span class=" spinner-border spinner-border-sm mr-1" role="status"
+                  data-bind="visible: confirmSMSCodeLoading"></span> Հաստատել
+        </button>
+        <button class="btn btn--size-lg btn--mobile-block"
+                data-bind="visible: canNotSubmit(), click: function () {modal.close()}">Փակել</button>
+    </div>
+    <a href="#" class="close-modal" data-bind="click: function () {modal.close()}">Close</a>
+</div>

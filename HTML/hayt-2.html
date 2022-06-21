@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ConverseBank</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/default.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <div class="container_fluid">
+
+        <header>
+            <a href="#" class="burger"></a>
+            <span class="close-menu"></span>
+            <a class="logo" href="index.html"><img src="img/logo.svg"></a>
+        </header>
+
+        <div class="sidebar">
+            <ul>
+                <li class="active"><a href="index.html"><span class="ico hayter"></span>Վարկի Հայտեր</a></li>
+                <li class="separator"></li>
+                <li><a href="resetpasspage.html"><span class="ico password"></span>Փոխել գաղտնաբառը</a></li>
+                <li><a href="login.html"><span class="ico logout"></span>Ելք համակարգից</a></li>
+            </ul>
+        </div>
+
+        <div class="content_body">
+            <div class="vizard">
+                <ul>
+                    <li class="current"><span class="step">1</span><a href="hayt-1.html">Նոր վարկի հայտ</a></li>
+                    <li class="current"><span class="step">2</span>Վարկի տվյալներ</li>
+                    <li><span class="step">3</span>Պայմանագրի տվյալներ</li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>Վարկի տվյալներ</h1>
+
+                            <div class="message error"><span class="ico"></span>Ձեր հայտը մերժվել է սքորինգի համակարգով։ Դուք կարող եք դիմել բանկ մանրամասն տեղեկությունների համար։</div>
+                            <div class="message warning"><span class="ico"></span>Ձեր հայտը ուղարկվել է լրացուցիչ դիտարկման։ Ձեձ հետ կկապնվի բանկի աշխատակիցը կարճ ժամկետներում։</div>
+                            <div class="message ok"><span class="ico"></span>Ձեր հայտը հաստատվել է։ Խնդրում ենք լրացնել հետեւյալ դաշտերը։։</div>
+
+
+
+                            <div class="tandem">
+                                <div class="form-group">
+                                    <label for="">Առաջարկվող առավելագույն գումար</label>
+                                    <input type="text" class="form-control" id="" value="1,000,000">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Նախընտրելի գումար</label>
+                                    <input type="text" class="form-control" id="">
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="tandem">
+                                <div class="form-group">
+                                    <label for="">Ժամկետ</label>
+                                    <div class="customselect">
+                                        <select>
+                                            <option>12 ամիս</option>
+                                            <option>24 ամիս</option>
+                                            <option>36 ամիս</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Տոկոսադրույք</label>
+                                    <input type="text" disabled class="form-control" id="" value="11%">
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="tandem">
+                                <div class="form-group">
+                                    <label for="">Նախընտրելի մարման օր</label>
+                                    <input type="text" class="form-control" id="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Քաղվածք ստանալու եղանակը</label>
+                                    <div class="customselect">
+                                        <select>
+                                            <option>AAAAAA</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="monthly-payment">
+                                <div class="mp-value">27,650դր.</div>
+                                Ամսական վճարի մոտավոր չափը կկազմի՝
+                            </div>
+
+                            <div class="checkbox radio">
+                                <label class="customcheck"> Քաղվածքն ուղարկել գրանցման հասցեով
+                                    <input type="radio">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+
+                            <div class="checkbox radio">
+                                <label class="customcheck"> Քաղվածքն ուղարկել բնակության հասցեով
+                                    <input type="radio">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+
+                            <h2>Վարկի հայտեր</h2>
+
+                            <div class="tandem">
+                                <div class="rediotitle">Ընտրել վարկի ստացման եղանակը</div>
+                                <div class="checkbox radio">
+                                    <label class="customcheck"> Անկանխիկ (քարտով/հաշվով)
+                                        <input type="radio">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+
+                                <div class="checkbox radio">
+                                    <label class="customcheck"> Կանխիկ (բանկի տարածքում)
+                                        <input type="radio">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="">Ընտրել քարտի համարը կամ հաշվեհամարը</label>
+                                <div class="customselect">
+                                    <select>
+                                        <option>2102 1545 2350 2077</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="checkbox">
+                                <label class="customcheck"> Պատվիրել նոր քարտ
+                                    <input type="checkbox" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+
+                            <div class="newcard">
+
+                                <div class="form-group">
+                                    <label for="">Նոր քարտի տեսակը</label>
+                                    <div class="customselect">
+                                        <select>
+                                            <option>VISA</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="tandem">
+                                    <div class="checkbox radio">
+                                        <label class="customcheck"> Մասնաճյուղից
+                                            <input type="radio" checked>
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+
+                                    <div class="checkbox radio">
+                                        <label class="customcheck"> Առաքումով
+                                            <input type="radio">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                                <div class="option-1">
+                                    <div class="form-group">
+                                        <label for="">Մասնաճյուղ</label>
+                                        <div class="customselect">
+                                            <select>
+                                                <option>VISA</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="checkbox radio">
+                                    <label class="customcheck"> Քարտն ուղարկել գրանցման հասցեով
+                                        <input type="radio" checked>
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+
+                                <div class="checkbox radio">
+                                    <label class="customcheck"> Քարտն ուղարկել բնակության հասցեով
+                                        <input type="radio">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+
+                                <div class="checkbox radio">
+                                    <label class="customcheck"> Նշել այլ հասցե
+                                        <input type="radio">
+                                        <span class="checkmark"></span>
+                                    </label>
+                                </div>
+
+                                <div class="option-2">
+                                    <div class="form-group">
+                                        <label for="">Առաքման հասցեն</label>
+                                        <input type="text" class="form-control" id="">
+                                    </div>
+                                </div>
+
+                                <div class="tandem">
+                                    <div class="form-group">
+                                        <label for="">Հեռախոսահամար 2</label>
+                                        <input type="text" class="form-control" id="">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="">Քարտի բլոկավորման գաղտնաբառ</label>
+                                        <input type="text" class="form-control" id="">
+                                    </div>
+                                    <div class="clearfix"></div>
+                                </div>
+
+                            </div>
+
+                            <h2>Անձնական տվյալներ</h2>
+                            <div class="tandem">
+                                <div class="form-group">
+                                    <label for="">Անուն (անգլերեն)</label>
+                                    <input type="text" class="form-control" id="">
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Ազգանուն (անգլերեն)</label>
+                                    <input type="text" class="form-control" id="">
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="tandem">
+                                <div class="form-group">
+                                    <label for="">Ծննդավայր</label>
+                                    <div class="customselect">
+                                        <select>
+                                            <option>AAA</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Քաղաքացիություն</label>
+                                    <div class="customselect">
+                                        <select>
+                                            <option>AAA</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+                            <div class="tandem">
+                                <div class="form-group">
+                                    <label for="">Էլ. փոստը</label>
+                                    <input type="text" class="form-control" id="">
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="message triangle"><span class="ico"></span>Խնդրում ենք նշել, եթե փոխվել են Ձեր գրանցման կամ բնակության հասցեները </div>
+
+                            <div class="address">
+                                <a href="#address-1" class="address-title" data-toggle="collapse">Գրանցման հասցե</a>
+                                <div id="address-1" class="collapse address-cont">
+
+                                    <div class="tandem">
+                                        <div class="form-group">
+                                            <label for="">Երկիր</label>
+                                            <div class="customselect">
+                                                <select>
+                                                    <option>AAA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Մարզ</label>
+                                            <div class="customselect">
+                                                <select>
+                                                    <option>AAA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div class="tandem">
+                                        <div class="form-group">
+                                            <label for="">Քաղաք</label>
+                                            <div class="customselect">
+                                                <select>
+                                                    <option>AAA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Փողոց</label>
+                                            <input type="text" class="form-control" id="">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div class="tandem">
+                                        <div class="form-group">
+                                            <label for="">Տուն/Շենք</label>
+                                            <input type="text" class="form-control" id="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Բնակարան</label>
+                                            <input type="text" class="form-control" id="">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <div class="address address-2">
+                                <a href="#address-2" class="address-title" data-toggle="collapse">Բնակության հասցե</a>
+                                <div id="address-2" class="collapse address-cont">
+
+                                    <div class="checkbox">
+                                        <label class="customcheck"> Նշել, եթե Ձեր գրանցման եւ բնակության հասցեները համընկնում են
+                                            <input type="checkbox" checked="checked">
+                                            <span class="checkmark"></span>
+                                        </label>
+                                    </div>
+
+                                    <div class="tandem">
+                                        <div class="form-group">
+                                            <label for="">Երկիր</label>
+                                            <div class="customselect">
+                                                <select>
+                                                    <option>AAA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Մարզ</label>
+                                            <div class="customselect">
+                                                <select>
+                                                    <option>AAA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div class="tandem">
+                                        <div class="form-group">
+                                            <label for="">Քաղաք</label>
+                                            <div class="customselect">
+                                                <select>
+                                                    <option>AAA</option>
+                                                </select>
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Փողոց</label>
+                                            <input type="text" class="form-control" id="">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                    <div class="tandem">
+                                        <div class="form-group">
+                                            <label for="">Տուն/Շենք</label>
+                                            <input type="text" class="form-control" id="">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Բնակարան</label>
+                                            <input type="text" class="form-control" id="">
+                                        </div>
+                                        <div class="clearfix"></div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+
+                            <div class="customuploader">
+                                <input type="file" name="file-1[]" id="file-1" class="inputfile inputfile-3" data-multiple-caption="{count} files selected" multiple />
+                                <label for="file-1">
+                                    <a class="icon"></a>
+                                    <div>Խնդրում ենք կցել անձը հաստատող փաստաթղթի պատճեն</div>
+                                    <span> Չկա կցված փաստաթուղթ</span>
+                                </label>
+                            </div>
+
+                            <div class="customuploader cu-2">
+                                <input type="file" name="file-2[]" id="file-2" class="inputfile inputfile-3" data-multiple-caption="{count} files selected" multiple />
+                                <label for="file-2">
+                                    <a class="icon"></a>
+                                    <div> Խնդրում ենք կցել հանրային ծառայության համարանիշի (սոցիալական քարտի) պատճեն</div>
+                                    <span> Չկա կցված փաստաթուղթ</span>
+                                </label>
+                            </div>
+
+                            <button class="btn btn-default">Հիշել</button>
+                            <button class="btn btn-success">Շարունակել</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<span class="overlay"></span>
+
+<!-- FileUploader -->
+<link rel="stylesheet" type="text/css" href="css/component.css" />
+<script>(function(e,t,n){var r=e.querySelectorAll("html")[0];r.className=r.className.replace(/(^|\s)no-js(\s|$)/,"$1js$2")})(document,window,0);</script>
+<script src="js/custom-file-input.js"></script>
+
+</body>
+</html>

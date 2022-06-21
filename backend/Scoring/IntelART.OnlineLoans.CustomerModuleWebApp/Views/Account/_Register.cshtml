@@ -1,0 +1,104 @@
+﻿@model IntelART.OnlineLoans.CustomerModuleWebApp.Controllers.Authentication.RegisterModel
+
+<div id="register" class="tab-pane fade@(Model.IsActive ? " in active":"")">
+    <div class="login-block">
+        <h1>Գրանցում</h1>
+        <form id="RegisterRequestForm" asp-action="Register">
+            <div class="loginreg-content">
+                <div class="row">
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label for="Name">Անուն (հայերեն)</label>
+                            <input type="text" class="form-control" asp-for="Name" id="registerName">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label for="Lastname">Ազգանուն (հայերեն)</label>
+                            <input type="text" class="form-control" asp-for="Lastname" id="registerLastName">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label for="SSN">ՀԾՀ / սոցիալական քարտ</label>
+                            <input type="text" class="form-control" maxlength="10" asp-for="SSN" id="registerSSN">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label for="Phone">Բջջային հեռախոսահամար</label>
+                            <div class="phonefield">
+                                <span class="country-code">374</span>
+                                <input placeholder="XX XXX XXX" maxlength="8" type="text" class="form-control" asp-for="Phone" id="registerPhone">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="form-group" data-toggle="tooltip" title="Առնվազն 8 նիշ՝ լատինական մեծատառ և փոքրատառ, թվանշան">
+                            <label for="Password" class="notify">Գաղտնաբառ</label>
+                            <input type="password" class="form-control" asp-for="Password">
+                        </div>
+                    </div>
+                    <div class="col-lg-6 col-md-6 col-sm-12">
+                        <div class="form-group">
+                            <label for="ConfirmPassword">Կրկնել գաղտնաբառ</label>
+                            <input type="password" class="form-control" asp-for="ConfirmPassword">
+                        </div>
+                    </div>
+                    <div class="clearfix"></div>
+                    <div class="col-lg-12 col-md-12 col-sm-12">
+                        <div class="form-group">
+                            <div class="checkbox">
+                                <label class="customcheck"><input type="checkbox" id="registrationAgreeCheckbox" asp-for="AcceptedTermsAndConditions"><span class="checkmark"></span>Ծանոթացել եմ <a href="/pdf/Terms_and_Conditions_of_Personal_Profile_Opening_and_Maintenance.pdf" target="_blank">պայմաններին և կանոններին</a><br>Համաձայն եմ</label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="login-footer">
+                            <a data-toggle="tab" class="forgetpass auth-btn" href="#login">Ես արդեն գրանցված եմ</a>
+                <button type="submit" disabled="disabled" id="registrationSubmitBtn" class="btn btn-success">Գրանցվել</button>
+            </div>
+        </form>
+        <div class="clearfix"></div>
+        </div>
+    </div>
+	<script>
+		(function ($, undefined) {
+			$(function () {
+				$('#registrationAgreeCheckbox').on('change', function () {
+					if ($(this).is(':checked')) {
+						$('#registrationSubmitBtn').removeAttr("disabled");
+					} else {
+						$('#registrationSubmitBtn').attr("disabled", "disabled");
+					}
+				});
+			});
+		})(jQuery);
+
+        (function ($, undefined) {
+            $(function () {
+                $(window).on("load", function () {
+                    if ($('#registrationAgreeCheckbox').is(':checked')) {
+                        $('#registrationAgreeCheckbox').attr('checked', false);
+                    }
+                });
+            });
+        })(jQuery);
+
+        (function ($, undefined) {
+            $(function () {
+                let form = $("#RegisterRequestForm")[0];
+                if (form) {
+                    form.addEventListener("submit", function () {
+                        let btn = $(this).find(":submit")[0];
+                        if (btn) {
+                            btn.disabled = true;
+                        }
+                    });
+                }
+            });
+        })(jQuery);
+	</script>

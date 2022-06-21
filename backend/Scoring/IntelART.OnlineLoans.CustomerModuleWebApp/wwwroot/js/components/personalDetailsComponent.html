@@ -1,0 +1,30 @@
+﻿<div data-bind="with: model">
+    <div data-bind="disabled: !isEditable()">
+        <div class="col-lg-5 col-md-5 col-sm-12">
+            <div class="form-group">
+                <label for="text">Անուն (հայերեն)</label>
+                <input type="text" data-bind="value: nameAm, validationError: {value: validationErrors, propertyName: 'nameAm'}" class="form-control text-uppercase">
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-12">
+            <div class="form-group">
+                <label for="text">Ազգանուն (հայերեն)</label>
+                <input type="text" data-bind="value: lastNameAm, validationError: {value: validationErrors, propertyName: 'lastNameAm'}" class="form-control text-uppercase">
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-12">
+            <div class="form-group">
+                <label for="text">Հայրանուն (հայերեն)</label>
+                <input type="text" data-bind="value: patronymicNameAm, validationError: {value: validationErrors, propertyName: 'patronymicNameAm'}" class="form-control text-uppercase">
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-12">
+            <div class="form-group">
+                <label for="text">Ծննդյան ամսաթիվ</label>
+                <div class="daterange datepicker">
+                    <input type="text" data-bind="ui-datepicker: birthDate, validationError: {value: validationErrors, propertyName: 'birthDate'}" class="form-control" placeholder="օր/ամիս/տարի">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

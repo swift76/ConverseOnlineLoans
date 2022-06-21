@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ConverseBank</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/default.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <div class="container_fluid">
+
+        <header>
+            <a href="#" class="burger"></a>
+            <span class="close-menu"></span>
+            <a class="logo" href="index.html"><img src="img/logo.svg"></a>
+        </header>
+
+        <div class="sidebar">
+            <ul>
+                <li class="active"><a href="index.html"><span class="ico hayter"></span>Վարկի Հայտեր</a></li>
+                <li class="separator"></li>
+                <li><a href="resetpasspage.html"><span class="ico password"></span>Փոխել գաղտնաբառը</a></li>
+                <li><a href="login.html"><span class="ico logout"></span>Ելք համակարգից</a></li>
+            </ul>
+        </div>
+
+        <div class="content_body">
+
+            <div class="content">
+                <div class="container-fluid">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <a href="#" class="btn btn-success norhayt">Դիմել Նոր Վարկի</a>
+                            <h1>Վարկի հայտեր</h1>
+
+                            <div class="hayter-table">
+                                <table class="table">
+                                <thead>
+                                <tr>
+                                    <th>Վարկատեսակ</th>
+                                    <th>Դիմումի ամսաթիվ</th>
+                                    <th>Հայտի գումար</th>
+                                    <th>Կարգավիճակ</th>
+                                    <th>Գործողություն</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr>
+                                    <td>Սպառողական</td>
+                                    <td>12.12.2018</td>
+                                    <td>1.125.000 դր.</td>
+                                    <td>Սպասվող</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Սպառողական</td>
+                                    <td>12.12.2018</td>
+                                    <td>1.125.000 դր.</td>
+                                    <td class="approved">Հաստատվել է</td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td>Սպառողական</td>
+                                    <td>12.12.2018</td>
+                                    <td>1.125.000 դր.</td>
+                                    <td class="rejected">Մերժվել է</td>
+                                    <td></td>
+                                </tr>
+                                </tbody>
+                            </table>
+                            </div>
+
+                            <div class="norecords">Դուք դեռ չունեք մուտքագրված վարկի հայտեր։</div>
+                            <div class="hint">
+                                * Հայտի հաստատումը կարող է տևել մինչև 3 աշխատանքային օր։ Մեր մասնագետը կկապնվի Ձեզ հետ Ձեր կողմից նշված հեռախոսահամարով հետագա քայերի ծանուցման հետ կապված, ինչպես նաեւ դուք կարող եք հետևել հայտի կարգավիճակին այս եջում։
+                            </div>
+
+
+                            <br />
+                            <br />
+                            <br />
+                            <br />
+                            <a href="#" class="login" data-toggle="modal" data-target="#timeout">Timeout message</a>
+                            <br />
+                            <a href="#" class="login" data-toggle="modal" data-target="#request">Waiting message</a>
+
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<span class="overlay"></span>
+
+
+
+
+
+
+
+<!--Timeout Message-->
+<div id="timeout" class="modal timeout fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Թայմաութ</h4>
+            </div>
+            <div class="modal-body">
+                <p>Լրացված տվյալները հիշելու մաիսն ինֆո.....</p>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default btn-sm">Հիշել</button>
+                <button class="btn btn-success btn-sm">Շարունակել</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Login / Reg end-->
+
+
+
+
+<!--Error Message-->
+<div id="request" class="modal timeout fade" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title">Կատարվում է հարցում</h4>
+            </div>
+            <div class="modal-body">
+                <div class="loader">Խնդրում ենք սպասել Ձեզ համար կատարվում է վարկի հարցում, որը կարող է տևել մի քանի րոպե։</div>
+            </div>
+            <div class="modal-body">
+                <div class="message success">
+                    Վարկի վերաբերյալ որոշում կայացնելու համար անհրաժեշտ են լրացուցիչ տվյալներ։ Բանկի աշխատակիցը Ձեզ հետ կապ կհաստատի առաջիկա 1 աշխատանքային օրվա ընթացքում։
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="message error">
+                    Ձեր վարկը ավտոմատ սքորինգի համակարգով մերժվել է։
+                </div>
+            </div>
+            <div class="modal-body">
+                <div class="message">
+                    Առկա է տեխնիկական խնդիր, խնդրում ենք փորձել ավելի ուշ։ Ձեր հայտը պահպանվել է <a href="hayter.html">Հայտեր</a> էջում։
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-default btn-sm">Վերադառնալ գլխավոր էջ</button>
+                <button class="btn btn-success btn-sm">Շարունակել</button>
+            </div>
+        </div>
+    </div>
+</div>
+<!--Login / Reg end-->
+
+
+
+
+
+
+
+
+</body>
+</html>

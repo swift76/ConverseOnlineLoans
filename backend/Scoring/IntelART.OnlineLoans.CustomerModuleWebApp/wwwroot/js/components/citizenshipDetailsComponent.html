@@ -1,0 +1,30 @@
+﻿<div data-bind="with: model">
+    <div data-bind="disabled: !isEditable()">
+        <div class="col-lg-5 col-md-5 col-sm-12">
+            <div class="form-group">
+                <label for="text">Ծննդավայր <span class="mandatory">*</span></label>
+                <div class="customselect" data-bind="with: countries">
+                    <select id="persInfoBirthPlace" data-bind="event: { blur: (data, event) => { if($parent.validator) {$parent.validator.validate('birthPlace', data, event);}}},
+                                                                options: items, optionsText: 'NAME', optionsValue: 'CODE',
+                                                                validationError: {value: $parent.validationErrors, propertyName: 'birthPlace'},
+                                                                delayBind: {waitUntil: items() && items().length, 
+                                                                bind: 'value:$parent.birthCountry'}"></select>
+                    <div class="busyIndicatorOverlay" data-bind="visible: !items.loaded()"></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-12">
+            <div class="form-group">
+                <label for="text">Քաղաքացիություն <span class="mandatory">*</span></label>
+                <div class="customselect" data-bind="with: countries">
+                    <select id="persInfoCitizenship" data-bind="event: { blur: (data, event) => { if($parent.validator) {$parent.validator.validate('citizenship', data, event);}}},
+                                                                options: items, optionsText: 'NAME', optionsValue: 'CODE',
+                                                                validationError: {value: $parent.validationErrors, propertyName: 'citizenship'},
+                                                                delayBind: {waitUntil: items() && items().length, 
+                                                                bind: 'value: $parent.citizenship'}"></select>
+                    <div class="busyIndicatorOverlay" data-bind="visible: !items.loaded()"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

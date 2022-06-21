@@ -1,0 +1,16 @@
+﻿CREATE TABLE [dbo].[ARCA_PAYMENT_ORDER](
+	[ID] [bigint] IDENTITY(1,1) NOT NULL,
+	[APPLICATION_PAYLOAD] [nvarchar](max) NOT NULL,
+	[ERROR_CODE] [nvarchar](16) NULL,
+	[ARCA_ORDER_ID] [varchar](64) NULL,
+	[FORM_URL] [nvarchar](1024) NULL,
+	[CREATED_DATE] [datetime] NOT NULL,
+	[PAY_DATE] [datetime] NULL,
+	[CARD_HOLDER_NAME] [nvarchar](128) NULL,
+	[STATUS] [nvarchar](16) NULL,
+	[IS_REFUNDED] [bit] NULL,
+ CONSTRAINT [PK_ARCA_PAYMENT_ORDER] PRIMARY KEY CLUSTERED 
+(
+	[ID] ASC
+))
+GO

@@ -1,0 +1,1 @@
+﻿define(['./ko.format.localizedDateTimeBinding', './ko.localizedTextBinding', './ko.localizedHtmlBinding'], function () { });

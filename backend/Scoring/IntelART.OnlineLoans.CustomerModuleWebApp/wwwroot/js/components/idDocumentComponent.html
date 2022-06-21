@@ -1,0 +1,23 @@
+﻿    <div data-bind="with: model">
+        <div data-bind="disabled: !isEditable()">
+            <div class="clearfix"></div>
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <div class="form-group">
+                    <label for="text">Փաստաթղթի տեսակ <span class="mandatory">*</span></label>
+                    <div class="customselect" data-bind="with: identificationDocumentTypes">
+                        <select data-bind="options: items, optionsText: 'NAME', optionsValue: 'CODE',
+                            validationError: {value: $parent.validationErrors, propertyName: 'idTypeCode'},
+                            delayBind: {waitUntil: items() && items().length, bind: 'value: $parent.identificationDocumentTypeCode'}"></select>
+                        <div class="busyIndicatorOverlay" data-bind="visible: !items.loaded()"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <div class="form-group">
+                    <label for="text">Փաստաթղթի համար <span class="mandatory">*</span></label>
+                    <input type="text" data-bind="value: identificationDocumentNumber,
+                       validationError: {value: validationErrors, propertyName: 'idNumber'}" class="form-control text-uppercase" maxlength="9">
+                </div>
+            </div>
+        </div>
+        </div>

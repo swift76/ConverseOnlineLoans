@@ -1,0 +1,293 @@
+html{height:100%;}
+body{height:100%;margin:0px; background:#F1F1F1;color:#333; font-family: "NoahTTRegular"; font-size: 14px;}
+.wrapper{min-height: 100%; position:relative;}
+span.ico{ background:url(../img/icons.svg) no-repeat;float: left; width: 24px; height: 24px; margin: 0 10px 0 0;}
+button:focus{ outline: none;}
+a{color: #0072AD;}
+
+@font-face {
+    font-family: "NoahTTRegular";
+    src: url('../fonts/noh45_am.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.loginblock{ width:100%; max-width: 550px; margin:100px auto 0; padding:40px; background: #FFF;}
+.loginblock h1{font-size: 24px; color:#0072AD; font-weight: 300; margin: 0 0 30px;}
+.loginblock .btn-success{ float:right;}
+.loginblock .forgetpass{ float:left;margin: 10px 0 0;}
+.loginblock .notregistered{ margin:20px 0 0;}
+.loginblock a{color: #0072AD;}
+.loginblock .reg-info{margin: 0 0 10px;}
+.loginblock .checkbox{margin:5px 0 15px;}
+
+.form-group label{color:#666; margin: 0 0 3px;}
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="email"],
+.form-group input[type="number"]
+{ padding:9px; border: solid 1px #CCC; border-radius:3px;}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    margin: 0;
+}
+.form-group{margin-bottom: 10px;}
+
+.tandem .form-group{float:left; width: 50%;}
+.tandem .form-group:nth-of-type(1){padding: 0 5px 0 0;}
+.tandem .form-group:nth-of-type(2){padding: 0 0 0 5px;}
+
+.btn-success{background: #EA862C; border:0px; padding: 10px 25px; font-weight: 300; min-width: 150px; text-align: center;}
+.btn-success:hover{background: #FFA04A;}
+.btn-default{padding: 10px 25px; font-weight: 300; min-width: 150px; text-align: center; border:solid 1px #CCC; color:#999; margin: 0 10px 0 0;}
+.btn-default:hover{border:solid 1px #999; color:#666;}
+
+ul, li{margin: 0px; padding: 0px; list-style-type: none;}
+
+header{background:#0072AD;color:#FFF;height:70px; position: fixed; top: 0px; width: 100%; z-index: 100;}
+header a.logo{ display:block; float:left; margin:23px 0 0 23px;}
+header .user{float:right; height: 42px; line-height: 42px; margin:14px 23px 0 0;}
+header .user span.ico{float:left; height: 42px; width: 42px; margin: 0 10px 0 0; background-position:0 -24px;}
+
+.sidebar{position:fixed; top: 70px; left: 0px;bottom:0px; width:250px; background: #FFF; padding: 20px;}
+.sidebar li{display: block; min-height:30px; padding:10px 0;}
+.sidebar li a{display: block;color:#333;padding:3px 0; line-height: 26px;}
+.sidebar li a:hover, .sidebar li.active a{border-right:solid 2px #EA862C; text-decoration: none;}
+.sidebar li.separator{border-top:solid 1px #F1F1F1; padding:0px; min-height: 1px; margin: 10px 0;}
+.sidebar li span.ico.hayter{background-position:0 0;}
+.sidebar li span.ico.password{background-position:-24px 0;}
+.sidebar li span.ico.logout{background-position:-48px 0;}
+
+.content_body{margin:90px 20px 20px 270px; background: #FFF;}
+.content_body .container{margin:0px;}
+.content{padding:30px 15px;}
+.content h1{ font-size: 24px; margin:0 0 30px;}
+
+.vizard{border-bottom:solid 1px #F1F1F1; line-height: 30px;}
+.vizard ul li{ float:left; margin:15px 0 15px 30px; color:#999; line-height:32px;}
+.vizard .step{ display: block; float: left; width:30px; height:30px; background:#F1F1F1;border-radius:15px; text-align: center; margin: 0 10px 0 0;}
+.vizard ul li.current{color:#000;}
+.vizard ul li.current .step{background: #EA862C; color: #FFF;}
+
+/* CUSTOM FORM ELEMENTS */
+.customcheck {
+    display: block;
+    position: relative;
+    padding-left:35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    line-height:23px;
+}
+
+/* Hide the browser's default checkbox */
+.customcheck input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height:22px;
+    width:22px;
+    border:solid 1px #CCC;
+    border-radius:3px;
+}
+
+.radio .checkmark {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height:22px;
+    width:22px;
+    border:solid 1px #CCC;
+    border-radius:11px;
+}
+
+/* On mouse-over, add a grey background color */
+.customcheck:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the checkbox is checked, add a blue background */
+.customcheck input:checked ~ .checkmark {
+    background-color: #EA862C;
+    border:0;
+}
+.radio .customcheck input:checked ~ .checkmark {
+    background-color: #CCC;
+    border:0;
+}
+
+
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the checkmark when checked */
+.customcheck input:checked ~ .checkmark:after {
+    display: block;
+}
+
+/* Style the checkmark/indicator */
+.customcheck .checkmark:after {
+    left:8px;
+    top:4px;
+    width:6px;
+    height:11px;
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    -webkit-transform: rotate(45deg);
+    -ms-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+
+.radio .customcheck .checkmark:after {
+    left:1px;
+    top:1px;
+    width:20px;
+    height:20px;
+    border-radius:10px;
+    border: solid white;
+    border-width:3px;
+    background:#EA862C;
+}
+
+.customselect{ overflow: hidden;border:solid 1px #CCC; border-radius:3px; background:#FFF url(../img/select.svg) right center no-repeat; background-size:26px;}
+.customselect select{padding:10px; height:42px; border:0px; background:none; width:110%;}
+
+/* --------------- */
+
+
+.content table{ width: 100%; margin:40px 0 0;}
+.content table th, .content table td{border-bottom: 1px solid #CCC;border-top:0px;}
+.content table th{padding: 5px 10px; font-size: 12px;}
+.content table td{padding: 15px 10px;}
+.norecords{margin: 30px 0 0; text-align: center; font-size: 16px;}
+.hint{margin:60px 0 0; font-size:14px; color:#999;}
+.content .approved{color:#51A997;}
+.content .rejected{color:#FF6565;}
+.norhayt{ float: right; padding:8px 20px; font-size: 14px;}
+.loan-description{margin:20px 0;}
+h2{ font-size: 24px; margin: 30px 0;}
+.content .form-group,
+.content .tandem {max-width:750px;}
+.content .checkbox{ margin: 20px 0 30px;}
+.content .checkbox.radio{ margin:0 0 15px;}
+.content .checkbox.radio .customcheck{ margin:0;}
+.content .tandem .form-group:nth-of-type(1){padding: 0 10px 0 0;}
+.content .tandem .form-group:nth-of-type(2){padding: 0 0 0 10px;}
+.content .form-group{margin: 0 0 15px;}
+
+.message{ line-height:25px; margin: 0 0 10px;}
+.message .ico{ float:left; width: 24px; height: 24px; margin: 0 10px 0 0;}
+.message.error .ico{background-position:-72px 0;}
+.message.warning .ico{background-position:-96px 0;}
+.message.ok .ico{background-position:-120px 0;}
+.message.ok{ margin: 0 0 30px;}
+.message.triangle .ico{background-position:-144px 0;}
+.message.triangle { margin: 0 0 30px;}
+
+.message.validation{margin:41px 0 0; color: #FF2929; line-height: 1;}
+
+.monthly-payment{padding:20px 0 5px; border-bottom:solid 2px #EA862C; max-width: 750px; margin: 0 0 30px; font-size: 16px;}
+.monthly-payment .mp-value{ float: right; font-size: 20px;}
+
+.address{margin: 0 0 10px;}
+.address-2{margin: 0 0 30px;}
+.address:last-child{margin: 0 0 30px;}
+.address-title{ display:block; padding:5px 0; border-bottom:solid 2px #EA862C; max-width: 750px; font-size:24px; color: #000; background:#FFF url(../img/select.svg) right center no-repeat; background-size:26px;}
+.address-title:hover{text-decoration: none;color: #333;}
+.address-cont{padding: 20px 0 0;}
+.address .checkbox {margin:5px 0 20px;}
+
+.tandem .radio{ float:left;}
+.tandem .radio:nth-of-type(1){margin:0 30px 0 0;}
+.tandem .rediotitle{margin: 0 0 15px;}
+.tandem  .checkbox.radio{margin: 0 30px 30px 0;}
+.checkbox ul{margin: 0 0 0 15px;}
+
+.checkbox li::before {content: "•"; color:#EA862C; display: inline-block; width: 1em; margin-left: -1em}
+
+
+/*File Uploader*/
+.customuploader input{ display: none;}
+.customuploader .inputfile + label{padding:0; margin: 0 0 20px; display: block;}
+.customuploader .inputfile-3 + label{color:#0072AD; font-size:14px;}
+.customuploader .inputfile-3 + label:hover{color:#000;}
+.customuploader.cu-2{margin: 0 0 40px;}
+.customuploader .icon{ float: left; width: 24px; height: 24px; margin: 0 10px 0 0; background:url(../img/icons.svg) -129px -24px no-repeat;}
+.customuploader span{ line-height:25px; font-size: 12px; color: #999;}
+/* ----------- */
+
+
+/* Modal */
+.modal.timeout{}
+.timeout .modal-body{ padding:40px 30px;}
+.timeout .modal-body p{margin:0px;}
+.timeout .message.error {color: #FF5757;}
+.timeout .modal-dialog {max-width:600px;}
+.loader {
+    background: url(../img/loader.svg) left top no-repeat;
+    background-size: 24px;
+    padding: 0 0 0 30px;
+    color: #0f5a69;
+    line-height: 24px;
+}
+.modal-header h4{ font-size: 18px; text-align: left;}
+.modal-header .close{ float: right; font-family: Roboto;}
+/* -------------- */
+
+
+@media only screen and (max-width:560px) {
+    .loginblock{ width:90%; padding:40px 20px;margin:90px auto 0;}
+    .loginblock .btn-success {float:none; margin: 20px 0; width: 100%;}
+    header a.logo {display: block; width:205px; float: none; margin: 23px auto 0;}
+    header .user{ display: none;}
+
+    .tandem .form-group {float:none; width:100%;}
+    .tandem .form-group:nth-of-type(1),
+    .tandem .form-group:nth-of-type(2){padding:0;}
+
+    .content_body {margin: 90px 15px 20px 15px;}
+    .content{padding:20px 0;}
+    .norhayt {float: none; width: 100%; margin: 0 0 20px;}
+
+    .content .tandem .form-group:nth-of-type(1),
+    .content .tandem .form-group:nth-of-type(2) {padding:0px;}
+
+    .hayter-table{ overflow: auto;}
+    .content table{ min-width: 750px; margin: 0px;}
+
+
+    /*Burger Menu*/
+    .burger{display:block; position:absolute; top:23px; left:20px; width:24px; height:24px; z-index:100; background:url(../img/icons.svg) -72px -24px no-repeat; cursor: pointer;}
+    .close-menu{display:none; position:absolute; top:23px; left:20px; width:24px; height:24px; z-index:200; background:url(../img/icons.svg) -96px -24px no-repeat; cursor: pointer;}
+    .overlay{display:none;position: fixed; top:70px; bottom: 0px; left: 0px;right:0px;z-index: 10; background-color: rgba(0, 0, 0, 0.5); transition: all ease 0.5s; }
+    .overlay.show,
+    .close-menu.show {display: block;}
+    body.freeze{ position:fixed;}
+    .sidebar{ display:block; position:fixed; top:70px; bottom: 0px; width:75%; left: -75%; z-index:350; background:#FFF; color: #FFF; overflow: auto; padding:20px 0 0 0; transition:all ease 0.5s;}
+    .sidebar.show{left:0%;}
+    .sidebar ul, .sidebar ul li{margin:0px; padding:0px; list-style-type: none;}
+    .sidebar ul li{padding:4px 0px;}
+    .sidebar ul li a{padding:6px 0px 6px 20px; margin: 0 15px 0 0;}
+
+
+    .btn-success,
+    .btn-default{min-width:100%; margin: 0 0 10px;}
+}

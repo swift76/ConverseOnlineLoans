@@ -1,0 +1,13 @@
+if exists (select * from sys.objects where name='WORKING_EXPERIENCE' and type='U')
+	drop table dbo.WORKING_EXPERIENCE
+GO
+
+CREATE TABLE dbo.WORKING_EXPERIENCE (
+	CODE 	char(1)			NOT NULL,
+	NAME_AM	nvarchar(50)	NOT NULL,
+	NAME_EN	varchar(50)		NOT NULL
+)
+GO
+
+CREATE UNIQUE CLUSTERED INDEX iWORKING_EXPERIENCE1 ON dbo.WORKING_EXPERIENCE(CODE)
+GO

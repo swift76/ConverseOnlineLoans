@@ -1,0 +1,32 @@
+<div class="site-content__center">
+    <div class="align--center">
+        <div class="title" data-bind="text: title, css: {
+            'title--no-border': viewStatus() === 'loading',
+            'color--red': viewStatus() === 'rejected',
+            'color--blue': viewStatus() === 'approved'
+        }"></div>
+
+        <div data-bind="if: viewStatus() === 'loading'">
+            <div class="loader">
+                <img src="images/loader.png" alt="loading">
+            </div>
+        </div>
+
+        <div class="txt color--blue" data-bind="if: viewStatus() === 'rejected'">
+            <p data-bind="text: msg"></p>
+        </div>
+
+        <div data-bind="if: viewStatus() === 'approved'">
+            <div class="price color--blue" data-bind="text: displayAmount"></div>
+
+            <div class="form__btn">
+                <a href="#" class="btn btn--size-lg"
+                   data-bind="click: function () {continueLoan()}, enable: !continueLoading(), css: {'btn--bg-blue': !continueLoading()}"">
+                    <span class=" spinner-border spinner-border-sm mr-1" role="status"
+                   data-bind="visible: continueLoading"></span>
+                    ՇԱՐՈՒՆԱԿԵԼ
+                </a>
+            </div>
+        </div>
+    </div>
+</div>

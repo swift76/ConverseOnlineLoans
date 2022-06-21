@@ -1,0 +1,15 @@
+if exists (select * from sys.objects where name='CREDIT_CARD_TYPE' and type='U')
+	drop table dbo.CREDIT_CARD_TYPE
+GO
+
+CREATE TABLE dbo.CREDIT_CARD_TYPE (
+	LOAN_TYPE_ID	char(2)			NOT NULL,
+	CURRENCY_CODE	char(3)			NOT NULL,
+	CODE 			char(3)			NOT NULL,
+	NAME_AM			nvarchar(50)	NOT NULL,
+	NAME_EN			varchar(50)		NOT NULL
+)
+GO
+
+CREATE UNIQUE CLUSTERED INDEX iCREDIT_CARD_TYPE1 ON dbo.CREDIT_CARD_TYPE(LOAN_TYPE_ID,CURRENCY_CODE,CODE)
+GO

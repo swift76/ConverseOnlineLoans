@@ -1,0 +1,17 @@
+﻿if exists (select * from sys.objects where name='GUARANTEE' and type='U')
+	drop table GUARANTEE
+GO
+
+CREATE TABLE GUARANTEE (
+	ID				int identity(1,1)	NOT NULL,
+	APPLICATION_ID	uniqueidentifier	NOT NULL,
+	CLIENT_CODE		char(8)				NULL,
+	AMOUNT			money				NOT NULL,
+	CURRENCY		char(3)				NOT NULL
+)
+GO
+
+CREATE UNIQUE CLUSTERED INDEX iGUARANTEES1 ON dbo.GUARANTEE(ID)
+GO
+CREATE INDEX iGUARANTEES2 on dbo.GUARANTEE(APPLICATION_ID)
+GO

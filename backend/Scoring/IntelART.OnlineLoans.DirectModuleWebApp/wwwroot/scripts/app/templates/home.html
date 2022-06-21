@@ -1,0 +1,171 @@
+<div class="site-content__center">
+    <div class="row">
+
+        <div class="col-md-6">
+            <div class="form__group" data-bind="validationElement: values().firstName">
+                <label for="" class="form__label">Անուն</label>
+                <input type="text" class="form__control" id="firstname"
+                       data-bind="value: values().firstName, restrictRegex: /^[a-zA-Z]*$/">
+            </div>
+        </div>
+
+
+        <div class="col-md-6">
+            <div class="form__group" data-bind="validationElement: values().lastname">
+                <label for="" class="form__label">Ազգանուն</label>
+                <input type="text" class="form__control" id="lastname"
+                       data-bind="value: values().lastname, restrictRegex: /^[a-zA-Z]*$/">
+            </div>
+        </div>
+
+        <div class="col-md-6">
+            <div class="form__group" data-bind="validationElement: values().email">
+                <label for="" class="form__label">Էլ. փոստ</label>
+                <input type="text" class="form__control" id="email"
+                       data-bind="value: values().email">
+            </div>
+        </div>
+
+
+        <div class="col-md-6">
+            <div class="row">
+                <div class="col-md-8">
+                    <div class="form__group form-group phone-group"
+                         data-bind="validationElement: values().phone">
+                        <label for="" class="form__label">Բջջ. հեռախոսահամար</label>
+                        <div class="form__mask">
+                            <input type="text" class="form__control" placeholder="99XXXXXX"
+                                   id="phone" maxlength="8"
+                                   data-bind="event:{ keypress: enterKeyPhoneCode }, value: values().phone, restrictRegex: /^[0-9]*$/, valueUpdate: 'afterkeydown', attr: {'disabled': values().phoneCode()}">
+                            <div class=" form__mask-txt">+374</div>
+                        </div>
+                        <div data-bind="if: !values().phone.error() && !values().phoneCode()">
+                            <span class="validation-tooltip show">Մուտքագրեք Ձեր գործող բջջային
+                                հեռախոսահամարը, հաստատեք այն, այնուհետև մուտքագրեք մեկանգամյա
+                                կոդը</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4 p-t-b-35">
+                    <a href="#" id="phoneNConfirmButton" class="btn btn--size-sm" data-bind="css: {'btn--bg-blue': values().phone.isValid() && !values().phoneCode()},
+                       attr: {'disabled': !values().phone.isValid() || values().phoneCode()},
+                       click: function () {verifyPhone()}">
+                        <span class=" spinner-border spinner-border-sm mr-1" role="status"
+                              data-bind="visible: getSMSCodeLoading"></span>Հաստատել</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <label for="" class="form__label">Ծննդյան ամսաթիվ</label>
+            <div class="row row--5">
+                <div class="col-sm-3">
+                    <div class="form__group form__group--575-sm"
+                         data-bind="validationElement: values().day">
+                        <ko.dropdown params="value: values().day,
+                            options: dayArray,
+                            caption: 'Օր'">
+                        </ko.dropdown>
+                    </div>
+                </div>
+                <div class="col-sm-5">
+                    <div class="form__group form__group--575-sm"
+                         data-bind="validationElement: values().month">
+                        <ko.dropdown params="value: values().month,
+                            options: monthArray,
+                            caption: 'Ամիս'">
+                        </ko.dropdown>
+                    </div>
+                </div>
+                <div class="col-sm-4">
+                    <div class="form__group" data-bind="validationElement: values().year">
+                        <ko.dropdown params="value: values().year,
+                            options: buildYearArray,
+                            caption: 'Տարեթիվ'">
+                        </ko.dropdown>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form__group mb-2" data-bind="validationElement: values().documentTypeCode">
+                <label for="" class="form__label">
+                    Փաստաթղթի տեսակ
+                </label>
+                <ko.dropdown params="value: values().documentTypeCode,
+                            get: getIdDocTypes,
+                            caption: 'Փաստաթղթի տեսակ'">
+                </ko.dropdown>
+            </div>
+            <div class="form__group" data-bind="validationElement: values().documentNumber">
+                <input id="idDocumentNumber" type="text" maxlength="9"
+                       data-bind="value: values().documentNumber, valueUpdate: 'afterkeydown', disabled: !values().documentTypeCode()"
+                       , class="form__control text-uppercase" placeholder="Փաստաթղթի համար">
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="form__group" data-bind="validationElement: values().socialCardNum">
+                <label for="" class="form__label">
+                    Սոցիալական քարտի համարանիշ
+                </label>
+                <input id="socialcard" type="text"
+                       data-bind="value: values().socialCardNum, restrictRegex: /^[0-9]*$/, valueUpdate: 'afterkeydown'"
+                       class="form__control" maxlength="10" placeholder="0000000000">
+            </div>
+        </div>
+    </div>
+
+    <div class="form__txt" data-bind="validationElement: values().agreedToTerms">
+        <div class="form__checkbox">
+            <input type="checkbox" id="readed" class="form__checkbox-radio"
+                   data-bind="checked: values().agreedToTerms" value="false">
+            <label for=" readed" id="readed_Label" class="form__checkbox-label"
+                   data-bind="click: function () {values().agreedToTerms(!values().agreedToTerms())}, validationElement: values().agreedToTerms"></label>
+        </div>
+
+        <div class="padding--left-35 cursor-pointer"
+             data-bind="click:  function () {values().agreedToTerms(!values().agreedToTerms())}">
+            <span>
+                Սույնով տալիս եմ իմ համաձայնությունը, որ «Կոնվերս Բանկ» ՓԲԸ-ն, առանց ինձ
+                տեղեկացնելու,
+                կարող է հարցումներ կատարել և ստանալ տեղեկատվություն՝
+            </span>
+            <ul class="list--marker">
+                <li>
+                    «ԱՔՌԱ Քրեդիտ Ռեփորթինգ» ՓԲԸ-ից իմ ներկա և անցյալ դրամական պարտավորությունների,
+                    ինչպես նաև այլ տվյալների մասին,
+                </li>
+                <li>
+                    ««Նորք» սոցիալական ծառայությունների տեխնոլոգիական և իրազեկման կենտրոն»
+                    հիմնադրամից
+                    իմ ներկա և անցյալ աշխատանքային գործունեության, ինչպես նաև այլ տվյալների մասին:
+                </li>
+            </ul>
+
+            <span>
+                Վերոնշյալ տեղեկատվությունը «Կոնվերս Բանկ» ՓԲԸ-ի կողմից կարող է օգտագործվել
+                ինձ հետ
+                վարկային
+                պայմանագիր կնքելու վերաբերյալ որոշում կայացնելու, ինչպես նաև սույն
+                համաձայնությունը
+                կիրառելի է իմ
+                և Բանկի միջև հարաբերությունների ամբողջ ժամանակահատվածի համար:
+            </span>
+        </div>
+
+        <span class="validation-tooltip" data-bind="text: values().agreedToTerms.error()"></span>
+    </div>
+
+    <div class="form__btn align--right align--mobile-center">
+        <button class="btn btn--size-lg" id="step1Button" data-bind="click: handleSubmit,
+                css: {'btn--bg-blue': values.isValid()}">
+            <span class=" spinner-border spinner-border-sm mr-1" role="status"
+                  data-bind="visible: continueLoading"></span>ՇԱՐՈՒՆԱԿԵԼ</button>
+    </div>
+</div>

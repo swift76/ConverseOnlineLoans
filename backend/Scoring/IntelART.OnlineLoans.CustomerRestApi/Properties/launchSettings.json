@@ -1,0 +1,17 @@
+{
+  "iisSettings": {
+    "windowsAuthentication": false,
+    "anonymousAuthentication": true,
+    "iisExpress": {
+      "applicationUrl": "http://localhost:5001/",
+      "sslPort": 0
+    }
+  },
+  "profiles": {
+    "ScoringServiceRestApi": {
+      "commandName": "Project",
+      "environmentVariables": {},
+      "applicationUrl": "http://localhost:5001"
+    }
+  }
+}

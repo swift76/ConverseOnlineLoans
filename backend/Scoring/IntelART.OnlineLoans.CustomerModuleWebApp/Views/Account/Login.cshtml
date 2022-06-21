@@ -1,0 +1,27 @@
+﻿@model IntelART.OnlineLoans.CustomerModuleWebApp.Controllers.Authentication.AuthenticationViewModel
+
+<div class="big-container">
+    <div class="container login-reg">
+@if (ViewContext.ModelState.IsValid == false)
+{
+        <div class="alert alert-danger auth-invalid">
+            @*<strong>Error</strong>*@
+            <div asp-validation-summary="All" class="danger"></div>
+        </div>
+}
+        <div class="login-body">
+            <div class="tab-content">
+                @Html.Partial("_Login.cshtml", Model.LoginModel)
+                @Html.Partial("_Register.cshtml", Model.RegisterModel)
+                @Html.Partial("_Verify.cshtml", Model.VerificationModel)
+            </div>
+
+        </div>
+            </div>
+
+    <script>
+        $('a.auth-btn[data-toggle="tab"]').on('shown.bs.tab', function (e) {
+            $(".auth-invalid").hide();
+        });
+    </script>
+        </div>

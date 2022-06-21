@@ -1,0 +1,188 @@
+<div class="site-content__center">
+
+    <div class="alert alert--success">
+        Ձեզ համար հաստատվել է վարկի առավելագույն սահմանաչափ։ Խնդում ենք լրացնել հետևյալ դաշտերը՝
+    </div>
+
+    <div class="row justify-content-between">
+        <div class="col-md-6">
+            <div class="form__group-range">
+                <label for="" class="form__label">Նախընտրելի գումար (AMD)</label>
+
+                <div class="form__range">
+                    <div id="range-price" data-bind="nouislider: { start: offeredLoanAmount, min: minimalAmountLimit(), max: maximalAmount(), step: 0.1},
+                        sliderOptions: { format: offeredAmountFormat, behaviour: 'tab'}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form__group-range">
+                <label for="" class="form__label">Ժամկետ</label>
+
+                <div class="form__range">
+                    <div id="range-deadline" data-bind="nouislider: { start: paymentPeriod, min: paymentPeriodMin(), max: paymentPeriodMax(), step: 1},
+                        sliderOptions: { format: paymentPeriodFormat, behaviour: 'snap'}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form__group-range">
+                <label for="" class="form__label">Մարման նախընտրելի օր (<span
+                          data-bind="text: paymentDayMin"></span>-<span
+                          data-bind="text: paymentDayMax"></span>)</label>
+
+                <div class="form__range">
+                    <div id="range-finsih"
+                         data-bind="nouislider: { start: paymentDay, min: paymentDayMin(), max: paymentDayMax(), step: 1},
+                        sliderOptions: { format: { decimals: 3, thousand: '.' }, behaviour: 'snap'}">
+                    </div>
+                </div>
+            </div>
+
+            <div class="form__group">
+                <div class="row flex-nowrap row--10 align-items-center">
+                    <div class="form__label form__label--no-margin">Տոկոսադրույք</div>
+                    <div class="col-item">
+                        <div class="badge" id="percentage" data-bind="text: interest() + '%'"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="form__group">
+                <div class="row flex-nowrap row--10 align-items-center">
+                    <div class="form__label form__label--no-margin nowrap">Ամսական մարում (AMD)
+                    </div>
+                    <div class="col-item">
+                        <div class="badge" id="totalAmount" data-bind="text: monthlyRepayment">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-6">
+
+            <!-- Քաղվածք ստանալու եղանակը -->
+            <div class="form__group"
+                 data-bind="validationElement: values().statementDeliveryMethod">
+                <label class="form__label">Քաղվածք ստանալու եղանակը</label>
+                <ko.dropdown params="value: values().statementDeliveryMethod,
+                             get: statementDeliveryMethods,
+                             caption: 'Ընտրել'">
+                </ko.dropdown>
+            </div>
+
+            <div class="panel form__group"
+                 data-bind="if: values().statementDeliveryMethod() === '1', validationElement: values().getExpertInEmail">
+                <input type="email" class="form__control" placeholder="Էլ. հասցե"
+                       data-bind="value: values().getExpertInEmail">
+            </div>
+
+            <div class="panel form__group"
+                 data-bind="if: values().statementDeliveryMethod() === '2', validationElement: values().getExpertInRegAddress">
+                <input type="text" class="form__control" placeholder="Հասցե"
+                       data-bind="value: values().getExpertInRegAddress">
+            </div>
+
+            <div class="panel form__group"
+                 data-bind="if: values().statementDeliveryMethod() === '3', validationElement: values().getExpertInHomeAddress">
+                <input type="text" class="form__control" placeholder="Հասցե"
+                       data-bind="value: values().getExpertInHomeAddress">
+            </div>
+
+            <!-- Գումարը ստանալու եղանակը -->
+            <div class="form__group" data-bind="validationElement: values().getLoanMethod">
+                <label class="form__label">Գումարը ստանալու եղանակը</label>
+
+                <ko.dropdown params="value: values().getLoanMethod,
+                             options: getMoneyMethods,
+                             caption: 'Ընտրել'">
+                </ko.dropdown>
+            </div>
+
+            <div class="panel form__group"
+                 data-bind="if: values().getLoanMethod() === 1, validationElement: values().getMoneyInBank">
+                <ko.dropdown params="value: values().getMoneyInBank,
+                                 get: getBankBranches,
+                                 caption: 'Ընտրել'">
+                </ko.dropdown>
+            </div>
+
+            <div class="panel wrapper" data-bind="if: values().getLoanMethod() === 2">
+
+                <div class="onoffswitch form__group">
+                    <input type="checkbox" name="onoffswitch" class="onoffswitch-checkbox"
+                           data-bind="checked: values().newCardInBank">
+
+                    <label class=" onoffswitch-label"
+                           data-bind="click: function(){values().newCardInBank(!values().newCardInBank())}">
+                        <div class="onoffswitch-inner"></div>
+                        <div class="onoffswitch-switch"></div>
+                    </label>
+                </div>
+
+                <div class="form__group"
+                     data-bind="if: values().newCardInBank(), validationElement: values().newCardReceiveBankLocation">
+                    <ko.dropdown params="value: values().newCardReceiveBankLocation,
+                                        get: getBankBranches,
+                                        caption: 'Ընտրել'">
+                    </ko.dropdown>
+                </div>
+
+                <div class="form__group"
+                     data-bind="if: !values().newCardInBank(), validationElement: values().newCardReceiveAddress">
+                    <input type="text" class="form__control"
+                           data-bind="value: values().newCardReceiveAddress" placeholder="Հասցե">
+                </div>
+
+                <div class="form__group" data-bind="validationElement: values().newCardType">
+                    <label for="" class="form__label">Ընտրեք քարտի տեսակը</label>
+                    <ko.dropdown params="value: values().newCardType,
+                                 get: getCreditCardTypes,
+                                 caption: 'Ընտրել'">
+                    </ko.dropdown>
+                </div>
+
+                <div class="form__group" data-bind="validationElement: values().newCardCode">
+                    <label class="form__label">Քարտի բլոկավորման / ապաբլոկավորման
+                        գաղտնաբառ</label>
+                    <input type="text" class="form__control" id="cardCode"
+                           data-bind="value: values().newCardCode">
+                </div>
+
+            </div>
+
+            <div id="card" class="panel form__group"
+                 data-bind="if: values().getLoanMethod() === 3, validationElement: values().getMoneyInExistingCard">
+                <ko.dropdown params="value: values().getMoneyInExistingCard,
+                                 get: getActiveCards,
+                                 caption: 'Ընտրել',
+                                 optionsText: 'CardDescription',
+                                 optionsValue: 'CardNumber'">
+                </ko.dropdown>
+            </div>
+        </div>
+    </div>
+
+    <div class="form__txt">
+        <div class="form__checkbox">
+            <input type="checkbox" id="checkbox1" class="form__checkbox-radio"
+                   data-bind="checked: values().agreedToTerms">
+            <label for="checkbox1" class="form__checkbox-label"></label>
+        </div>
+
+        <div class="padding--left-35">
+            <p class="cursor-pointer">
+                <span
+                      data-bind="click: function () {values().agreedToTerms(!values().agreedToTerms())}">Համաձայն
+                    եմ պլաստիկ քարտերի պատվիրման </span>
+                <a href="#" data-bind="click: openTermModal">պայմաններ</a>
+            </p>
+        </div>
+    </div>
+
+    <div class=" form__btn align--right align--mobile-center">
+        <button id="rangeButton" class="btn  btn--size-lg" data-bind="click: handleSubmit,
+        enable: values.isValid(),
+        css: {'btn--bg-blue': values.isValid()}"><span class=" spinner-border spinner-border-sm mr-1" role="status"
+        data-bind="visible: continueLoading"></span>ՇԱՐՈՒՆԱԿԵԼ</a>
+    </div>
+</div>

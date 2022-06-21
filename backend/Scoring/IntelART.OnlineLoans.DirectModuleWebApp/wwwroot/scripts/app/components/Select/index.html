@@ -1,0 +1,6 @@
+<div class="relative">
+    <select data-bind="options: items, optionsText: params.optionsText || 'NAME', optionsValue: params.optionsValue || 'CODE', optionsCaption: params.caption || 'Ընտրել',
+    optionsAfterRender: optionsAfterRender, delayBind: { waitUntil: items() && items().length, bind: 'value: params.value, niceSelect: true'}"
+            class=" form__control form__select"></select>
+    <div class="select-options-loading" data-bind="visible: !items.loaded()"></div>
+</div>

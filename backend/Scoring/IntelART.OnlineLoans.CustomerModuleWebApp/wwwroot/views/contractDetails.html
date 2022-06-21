@@ -1,0 +1,194 @@
+﻿<div class="tab-pane fade in" data-bind="disabled: !isEditable()">
+  <div class="" id="form">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 col-sm-12">
+        <h2>Պայմանագրի կնքում</h2>
+      </div>
+
+      <div>
+        <div class="col-lg-10 col-md-10 col-sm-12">
+          <div class="form-group">
+            <label for="text" data-bind="text: cardDeliveryHintText"></label>
+          </div>
+        </div>
+        <div class="col-lg-10 col-md-10 col-sm-12">
+          <div
+            class="form-group"
+            data-bind="visible: activeCardListVisible, disabled: !orderNewCardFormEnable()"
+          >
+            <label for="text">Ընտրել քարտի համարը</label>
+            <div class="customselect" data-bind="with: activeCreditCards">
+              <select
+                data-bind="options: items, optionsText: 'NAME', optionsValue: 'CODE',
+                                    validationError: {value: $parent.validationErrors, propertyName: 'activeCreditCard'},
+                                    delayBind: {waitUntil: items() && items().length, bind: 'value: $parent.activeCreditCard'}"
+              ></select>
+              <div
+                class="busyIndicatorOverlay"
+                data-bind="visible: !items.loaded()"
+              ></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-lg-10 col-md-10 col-sm-12 separate15">
+          <div class="checkbox">
+            <label
+              ><input type="checkbox" data-bind="checked: newCardCheckbox" />
+              Պատվիրել նոր քարտ</label
+            >
+          </div>
+        </div>
+
+        <div data-bind="disabled: orderNewCardFormEnable">
+          <div class="col-lg-10 col-md-10 col-sm-12">
+            <div class="form-group">
+              <label for="text">Ընտրել քարտի տեսակը</label>
+              <div class="customselect" data-bind="with: creditCardTypes">
+                <select
+                  data-bind="options: items, optionsText: 'NAME', optionsValue: 'CODE',
+                                        validationError: {value: $parent.validationErrors, propertyName: 'creditCardType'},
+                                        delayBind: {waitUntil: items() && items().length, bind: 'value: $parent.creditCardType'}"
+                ></select>
+
+                <div
+                  class="busyIndicatorOverlay"
+                  data-bind="visible: !items.loaded()"
+                ></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 col-md-3 col-sm-12 separate15">
+            <div class="radio">
+              <label
+                ><input
+                  type="radio"
+                  name="cardDeliveryTypes"
+                  value="true"
+                  data-bind="checked: isCardDelivered"
+                />
+                Առաքումով</label
+              >
+            </div>
+          </div>
+          <div class="col-lg-3 col-md-3 col-sm-12 separate15">
+            <div class="radio">
+              <label
+                ><input
+                  type="radio"
+                  name="cardDeliveryTypes"
+                  value="false"
+                  data-bind="checked: isCardDelivered"
+                />
+                Մասնաճյուղից</label
+              >
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div
+            class="col-lg-10 col-md-10 col-sm-12"
+            data-bind="visible: isCardDeliveryAddressVisible"
+          >
+            <div class="form-group">
+              <label for="text">Նշել քարտի առաքման հասցեն</label>
+              <input
+                class="form-control"
+                data-bind="value: cardDeliveryAddress,
+                                   validationError: {value: validationErrors, propertyName: 'cardDeliveryAddress'}"
+              />
+            </div>
+          </div>
+
+          <div
+            class="col-lg-10 col-md-10 col-sm-12"
+            data-bind="visible: !isCardDeliveryAddressVisible()"
+          >
+            <div class="form-group">
+              <label for="text"
+                >Նշել այն մասնաճյուղը, որտեղից ցանկանում եք ստանալ քարտը</label
+              >
+              <div class="customselect" data-bind="with: bankBranches">
+                <select
+                  data-bind="options: items, optionsText: 'NAME', optionsValue: 'CODE',
+                                        validationError: {value: $parent.validationErrors, propertyName: 'bankBranch'},
+                                        delayBind: {waitUntil: items() && items().length, bind: 'value: $parent.bankBranch'}"
+                ></select>
+                <div
+                  class="busyIndicatorOverlay"
+                  data-bind="visible: !items.loaded()"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-10 col-md-10 col-sm-12 separate15">
+        <div class="checkbox">
+          <label>
+            <input
+              type="checkbox"
+              data-bind="checked: contractTermsCheckbox"
+            />Հաստատում եմ, որ ծանոթացել եմ և համաձայն եմ հաստատված վարկի
+            <span data-bind="visible: isPersonalSheetVisible">
+              <a
+                href="#"
+                data-bind="click: function() { $parent.action('personalSheetLink'); }, visible: !isApplicationEditable()"
+                target="_blank"
+              >
+                <i class="fa fa-file-pdf-o" aria-hidden="true"></i> էական
+                պայմանների անհատական թերթիկին
+              </a>
+              <span data-bind="visible: isApplicationEditable">
+                <i class="fa fa-file-pdf-o" aria-hidden="true"></i> էական
+                պայմանների անհատական թերթիկին
+              </span>
+              և
+            </span>
+            <a
+              href="#"
+              data-bind="click: function() { $parent.action('loanContractLink'); }, visible: !isApplicationEditable()"
+              target="_blank"
+            >
+              <i class="fa fa-file-pdf-o" aria-hidden="true"></i> վարկային
+              պայմանագրով սահմանված բոլոր պայմաններին
+            </a>
+            <span data-bind="visible: isApplicationEditable">
+              <i class="fa fa-file-pdf-o" aria-hidden="true"></i> վարկային
+              պայմանագրով սահմանված բոլոր պայմաններին </span
+            >։
+          </label>
+        </div>
+      </div>
+      <div
+        class="col-lg-12 col-md-12 col-sm-12 actions"
+        data-bind="disabled: isSubmitButtonEnable"
+      >
+        <button
+          class="btn btn-success"
+          data-bind="click: function() { $parent.action('submitContract'); }"
+        >
+          Հաստատել
+        </button>
+      </div>
+
+      <div class="col-lg-12 col-md-12 col-sm-12 separate15">
+        <div>
+          <a href="https://www.conversebank.am/hy/loans/" target="_blank"
+            >"Կոնվերս Բանկ" ՓԲԸ-ի ծառայությունների հիմնական պայմաններ և
+            սակագներ։</a
+          >
+        </div>
+        <div>
+          <a
+            href="https://www.conversebank.am/u_files/file/Documents%202017/%D5%94%D5%A1%D6%80%D5%BF%D5%A5%D6%80%D5%AB%20%D6%85%D5%A3%D5%BF%D5%A1%D5%A3%D5%B8%D6%80%D5%AE%D5%B4%D5%A1%D5%B6%20%D5%AF%D5%A1%D5%B6%D5%B8%D5%B6%D5%B6%D5%A5%D6%80%20June%202017.pdf"
+            target="_blank"
+            >"Կոնվերս Բանկ" ՓԲԸ-ի վճարային քարտերի սպասարկման պայմաններ և
+            օգտագործման կանոններ։</a
+          >
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

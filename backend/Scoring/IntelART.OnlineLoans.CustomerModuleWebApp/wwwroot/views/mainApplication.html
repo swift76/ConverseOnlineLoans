@@ -1,0 +1,566 @@
+﻿<div class="tab-pane fade in" data-bind="disabled: !isEditable()">
+  <div class="" id="form">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 col-sm-12">
+        <h2>Վարկի տվյալներ</h2>
+      </div>
+      <div
+        class="col-lg-10 col-md-10 col-sm-12"
+        data-bind="with: preApprovalApplication"
+      >
+        <div class="form-group">
+          <div class="message ok">
+            <span class="ico"></span>
+            <span
+              >Ձեր հայտը հաստատվել է։ Խնդրում ենք լրացնել հետևյալ դաշտերը։</span
+            >
+          </div>
+        </div>
+      </div>
+
+      <div data-bind="with: mainApplication">
+        <div class="row customRow">
+          <div class="col-lg-5 col-md-5 col-sm-12">
+            <div class="form-group">
+              <label for="text">Առաջարկվող առավելագույն գումար</label>
+              <input
+                type="text"
+                data-bind="value: $parent.maximumAmount, enable: false"
+                class="form-control"
+              />
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-5 col-sm-12">
+            <div class="form-group">
+              <label for="amount"
+                >Նախընտրելի գումար <span class="mandatory">*</span></label
+              >
+              <input
+                placeholder="0"
+                data-bind="event: { blur: (data, event) => $parent.validate('offeredLoanAmount', data, event)},
+                                          numericInput: {value: offeredLoanAmount, isNumber: true},
+                                          validationError: {value: validationErrors, propertyName: 'offeredLoanAmount'}"
+                type="text"
+                class="form-control"
+                maxlength="10"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="row customRow">
+          <div class="col-lg-5 col-md-5 col-sm-12">
+            <div class="form-group">
+              <label for="text">
+                Ժամկետ
+                <span
+                  class="mp-value"
+                  data-bind="text:scoringResultAllowText"
+                ></span>
+                <span class="mandatory">*</span>
+              </label>
+              <div data-bind="with: loanPaymentPeriods">
+                <input
+                  id="sparoxakanDuration"
+                  type="text"
+                  data-bind="event: { blur: (data, event) => $parents[1].validate('selectedPaymentPeriod', data, event)},
+                                       disabled: $parent.loanPaymentPeriodDisabled,
+                                       restrictRegex: /^[0-9]*$/,
+                                       value: $parent.loanPaymentPeriod,
+                                       validationError: {value: $parent.validationErrors, propertyName: 'selectedPaymentPeriod'}"
+                  class="form-control"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-5 col-sm-12">
+            <div class="form-group">
+              <label for="text">Տոկոսադրույք</label>
+              <input
+                type="text"
+                data-bind="value: $parent.interest, enable: false"
+                class="form-control"
+              />
+            </div>
+          </div>
+        </div>
+
+        <div class="row customRow">
+          <div
+            class="col-lg-5 col-md-5 col-sm-12"
+            data-bind="visible: !isRepayDayFixed()"
+          >
+            <div class="form-group" id="payDayField">
+              <label for="text">
+                Նախընտրելի մարման օր (
+                <span
+                  class="mp-value"
+                  data-bind="text:paymentDayAllowText"
+                ></span>
+                )<span class="mandatory">*</span>
+              </label>
+              <input
+                type="text"
+                data-bind="event: { blur: (data, event) => $parent.validate('paymentDayMissing', data, event)},
+                               restrictRegex: /^[0-9]*$/, value: paymentDay, valueUpdate: 'afterkeydown',
+                               validationError: {value: validationErrors, propertyName: 'paymentDayMissing'}"
+                ,
+                class="form-control"
+                maxlength="2"
+              />
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-5 col-sm-12">
+            <div class="form-group">
+              <label for="amount">Քաղվածք ստանալու եղանակը</label>
+              <div
+                class="customselect"
+                data-bind="with: $parent.statementDeliveryMethods"
+              >
+                <select
+                  data-bind="options: items, optionsText: 'NAME', optionsValue: 'CODE',
+                                                                    delayBind: {waitUntil: items() && items().length,
+                                                                    bind: 'value: $parent.statementDeliveryMethod'}"
+                ></select>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-10 col-md-10 col-sm-12">
+        <div class="monthly-payment">
+          <span class="mp-value" data-bind="html: averageMonthlyPayment"></span>
+          Ամսական վճարի մոտավոր չափը՝
+        </div>
+      </div>
+    </div>
+
+    <!--<div data-bind="visible: !isDataComplete()">-->
+    <div class="row" data-bind="with: loanDeliveryDetails">
+      <div data-bind="visible: !isOnlyInCashAvailable()">
+        <div class="col-lg-10 col-md-10 col-sm-12">
+          <h2>Վարկի հայտեր</h2>
+          <div class="rediotitle">
+            Ընտրել վարկի ստացման եղանակը <span class="mandatory">*</span>
+          </div>
+        </div>
+
+        <div class="col-lg-5 col-md-5 col-sm-12">
+          <div class="radio">
+            <label class="customcheck">
+              <input
+                type="radio"
+                name="takeMoneyTypes"
+                value="true"
+                data-bind="checked: takeMoneyFromBank"
+              />
+              Անկանխիկ (հաշվով)
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-12">
+          <div class="radio">
+            <label class="customcheck">
+              <input
+                type="radio"
+                name="takeMoneyTypes"
+                value="false"
+                data-bind="checked: takeMoneyFromBank"
+              />
+              Կանխիկ (բանկի տարածքում)
+              <span class="checkmark"></span>
+            </label>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div data-bind="with: loanDeliveryDetails">
+      <div class="row hide">
+        <div
+          class="col-lg-10 col-md-10 col-sm-12"
+          data-bind="visible: !willTakeMoneyFromBankVisbility()"
+        >
+          <div class="form-group">
+            <label for="text"
+              >Նշել այն մասնաճյուղը, որտեղից ցանկանում եք ստանալ գումարը</label
+            >
+            <div class="customselect" data-bind="with: bankBranches">
+              <select
+                data-bind="options: items, optionsText: 'NAME', optionsValue: 'CODE',
+                                            validationError: {value: $parent.validationErrors, propertyName: 'bankBranch'},
+                                            delayBind: {waitUntil: items() && items().length, bind: 'value: $parent.bankBranch'}"
+              ></select>
+              <div
+                class="busyIndicatorOverlay"
+                data-bind="visible: !items.loaded()"
+              ></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="row" data-bind="visible: willTakeMoneyFromBankVisbility()">
+        <div class="col-lg-10 col-md-10 col-sm-12">
+          <div class="form-group">
+            <label for="text" data-bind="text: cardDeliveryHintText"></label>
+            <!-- <label
+              class="card-hint-text"
+              data-bind="localizedHtml: 'STEP4.CARD.HINT.3'"
+            ></label> -->
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-12">
+          <div class="form-group" data-bind="visible: activeCardListVisible">
+            <label for="text"
+              >Ընտրել հաշիվը <span class="mandatory">*</span></label
+            >
+            <div class="customselect" data-bind="with: activeCreditCards">
+              <select
+                data-bind="options: items, optionsText: 'NAME', optionsValue: 'CODE',
+                                    validationError: {value: $parent.validationErrors, propertyName: 'activeCreditCard'},
+                                    delayBind: {waitUntil: items() && items().length, bind: 'value: $parent.activeCreditCard'}"
+              ></select>
+              <div
+                class="busyIndicatorOverlay"
+                data-bind="visible: !items.loaded()"
+              ></div>
+            </div>
+          </div>
+          <div class="form-group" data-bind="visible: !activeCardListVisible">
+            <div class="message error">
+              <span class="ico"></span>
+              <span
+                >Վարկի անկանխիկ տրամադրման դեպքում պետք է ունենալ տրամադրման
+                հաշիվը</span
+              >
+            </div>
+          </div>
+        </div>
+        <div class="hide">
+          <div class="col-lg-10 col-md-10 col-sm-12 separate15">
+            <div class="checkbox">
+              <label class="customcheck">
+                <input type="checkbox" data-bind="checked: newCardCheckbox" />
+                Պատվիրել նոր քարտ
+                <span class="checkmark"></span>
+              </label>
+            </div>
+          </div>
+          <div data-bind="disabled: orderNewCardFormEnable">
+            <div class="col-lg-10 col-md-10 col-sm-12">
+              <div class="form-group">
+                <label for="text">Նոր քարտի տեսակը</label>
+                <div class="customselect" data-bind="with: creditCardTypes">
+                  <select
+                    data-bind="options: items, optionsText: 'NAME', optionsValue: 'CODE',
+                                            validationError: {value: $parent.validationErrors, propertyName: 'creditCardType'},
+                                            delayBind: {waitUntil: items() && items().length, bind: 'value: $parent.creditCardType'}"
+                  ></select>
+                  <div
+                    class="busyIndicatorOverlay"
+                    data-bind="visible: !items.loaded()"
+                  ></div>
+                </div>
+              </div>
+            </div>
+            <div
+              class="col-lg-3 col-md-3 col-sm-12 separate15"
+              data-bind="disabled: orderNewCardFormEnable"
+            >
+              <div class="radio">
+                <label class="customcheck">
+                  <input
+                    type="radio"
+                    name="cardDeliveryTypes"
+                    value="false"
+                    data-bind="checked: isCardDelivered"
+                  />
+                  Մասնաճյուղից
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+            <div
+              class="col-lg-3 col-md-3 col-sm-12 separate15"
+              data-bind="disabled: orderNewCardFormEnable"
+            >
+              <div class="radio">
+                <label class="customcheck">
+                  <input
+                    type="radio"
+                    name="cardDeliveryTypes"
+                    value="true"
+                    data-bind="checked: isCardDelivered"
+                  />
+                  Առաքումով
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+            <div
+              class="col-lg-10 col-md-10 col-sm-12"
+              data-bind="visible: !isCardDeliveryAddressVisible(),disabled: orderNewCardFormEnable"
+            >
+              <div class="form-group">
+                <label for="text">Մասնաճյուղ</label>
+                <div class="customselect" data-bind="with: bankBranches">
+                  <select
+                    data-bind="options: items, optionsText: 'NAME', optionsValue: 'CODE',
+                                                    validationError: {value: $parent.validationErrors, propertyName: 'bankBranch'},
+                                                    delayBind: {waitUntil: items() && items().length, bind: 'value: $parent.bankBranch'}"
+                  ></select>
+                  <div
+                    class="busyIndicatorOverlay"
+                    data-bind="visible: !items.loaded()"
+                  ></div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="clearfix"></div>
+          <div
+            data-bind="visible: isCardDeliveryAddressVisible,disabled: orderNewCardFormEnable"
+          >
+            <div class="col-lg-10 col-md-10 col-sm-12">
+              <div class="radio">
+                <label class="customcheck">
+                  <input
+                    type="radio"
+                    name="cardDeliveryAddressOption"
+                    value="CARD_DELIVERY_TO_REGISTRATION_ADDRESS"
+                    data-bind="checked: $parent.cardDeliveryAddressOption"
+                  />
+                  Քարտն ուղարկել գրանցման հասցեով
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-12">
+              <div class="radio">
+                <label class="customcheck">
+                  <input
+                    type="radio"
+                    name="cardDeliveryAddressOption"
+                    value="CARD_DELIVERY_TO_MAILING_ADDRESS"
+                    data-bind="checked: $parent.cardDeliveryAddressOption"
+                  />
+                  Քարտն ուղարկել բնակության հասցեով
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+            <div class="col-lg-10 col-md-10 col-sm-12">
+              <div class="radio">
+                <label class="customcheck">
+                  <input
+                    type="radio"
+                    name="cardDeliveryAddressOption"
+                    value="CARD_DELIVERY_TO_OTHER_ADDRESS"
+                    data-bind="checked: $parent.cardDeliveryAddressOption"
+                  />
+                  նշել այլ հասցե
+                  <span class="checkmark"></span>
+                </label>
+              </div>
+            </div>
+            <div
+              class="col-lg-10 col-md-10 col-sm-12"
+              data-bind="visible: $parent.cardDeliveryAddressOption() == 'CARD_DELIVERY_TO_OTHER_ADDRESS'"
+            >
+              <div class="form-group">
+                <label for="text">Առաքման հասցեն</label>
+                <input
+                  type="text"
+                  class="form-control"
+                  data-bind="value: cardDeliveryAddress,
+                                           validationError: {value: validationErrors, propertyName: 'cardDeliveryAddress'}"
+                />
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-5 col-md-5 col-sm-12">
+            <div class="form-group">
+              <label for="text">Հեռախոսահամար 2</label>
+              <div class="phonefield"></div>
+              <span class="country-code">374</span>
+              <input
+                placeholder="XX XXX XXX"
+                maxlength="8"
+                type="text"
+                class="form-control"
+                data-bind="value: $parent.phoneNumber, validationError: {value: validationErrors, propertyName: 'phoneNumber'}"
+              />
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-12">
+          <div class="row hide">
+            <label for="text">Քարտի գաղտնաբառը</label>
+            <input
+              type="text"
+              class="form-control"
+              data-bind="value: $parent.cardPassword, validationError: {value: validationErrors, propertyName: 'cardPassword'}"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div data-bind="with: mainApplication">
+  <div id="sparoxakanPersonalInfo" data-bind="visible: !isDataComplete()">
+    <div class="row">
+      <div class="col-lg-10 col-md-10 col-sm-12">
+        <h2>Անձնական տվյալներ</h2>
+      </div>
+
+      <english-name-surname params="model: userProfile"></english-name-surname>
+      <div class="clearfix"></div>
+      <citizenship-details params="model: userProfile, validator: $parent">
+      </citizenship-details>
+      <personal-contacts
+        params="model: userProfile, validator: $parent"
+      ></personal-contacts>
+    </div>
+    <div class="row message triangle">
+      <span class="ico"></span>Խնդրում ենք նշել, եթե փոխվել են Ձեր գրանցման կամ
+      բնակության հասցեները
+    </div>
+    <div class="row">
+      <div class="col-lg-10 col-md-10 col-sm-12">
+        <h2
+          data-bind="click: function(){toggleAddres1()}"
+          class="address-title"
+        >
+          Գրանցման հասցե
+        </h2>
+        <div class="row">
+          <div
+            data-bind="visible: isShowAddres1()"
+            id="address-1"
+            class="address-cont"
+          >
+            <address-details
+              params="model: userProfile.residentialAddress, validator: $parent"
+            >
+            </address-details>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-10 col-md-10 col-sm-12">
+        <h2
+          data-bind="click: function(){toggleAddres2()}"
+          class="address-title"
+        >
+          Բնակության հասցե
+        </h2>
+        <div class="row">
+          <div data-bind="visible: isShowAddres2()" id="address-2">
+            <div class="col-lg-10 col-md-10 col-sm-12">
+              <label class="customcheck checkbox">
+                <input
+                  type="checkbox"
+                  data-bind="checked: isSameAddress, disabled: !isEditable()"
+                />
+                Նշել, եթե Ձեր գրանցման և բնակության հասցեները համընկնում են
+                <span class="checkmark"></span>
+              </label>
+            </div>
+            <address-details
+              params="model: userProfile.homeAddress, validator: $parent"
+            >
+            </address-details>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+      class="row hide"
+      data-bind="visible: !clientCode() || clientCode().length == 0"
+    >
+      <div class="col-lg-10 col-md-10 col-sm-12 formblock">
+        <h2>Փաստաթղթեր</h2>
+      </div>
+      <div class="col-lg-10 col-md-10 col-sm-12 fileuploader">
+        <form enctype="multipart/form-data">
+          <a class="addfile fileUpload">
+            Խնդրում ենք կցել անձը հաստատող փաստաթղթի պատճեն
+            <input
+              type="file"
+              data-bind="event: {change: passportUploader.fileUpload}"
+              class="upload"
+            /> </a
+          ><br />
+          <div>
+            <a
+              class="filepath"
+              data-bind="visible: isPassportUploaded, attr: { href: passportUrl }"
+              target="_blank"
+              >Բեռնել</a
+            >
+            <span class="filepath" data-bind="visible: !isPassportUploaded()"
+              >Չկա ընտրված փաստաթուղթ</span
+            >
+            <progress
+              data-bind="attr: { value: passportUploader.loadedData, max: passportUploader.totalData }, style: { display: passportUploader.isUploadingStarted() ? '' : 'none' }"
+            ></progress>
+          </div>
+        </form>
+      </div>
+      <div class="col-lg-10 col-md-10 col-sm-12 fileuploader">
+        <form enctype="multipart/form-data">
+          <a class="addfile fileUpload">
+            Խնդրում ենք կցել հանրային ծառայության համարանիշի (սոցիալական քարտի)
+            պատճեն
+            <input
+              type="file"
+              data-bind="event: {change: socCardUploader.fileUpload}"
+              class="upload"
+            />
+          </a>
+          <br />
+          <div>
+            <a
+              class="filepath"
+              data-bind="visible: isSocCardUploaded, attr: { href: isSocCardUrl }"
+              target="_blank"
+              >Բեռնել</a
+            >
+            <span class="filepath" data-bind="visible: !isSocCardUploaded()"
+              >Չկա ընտրված փաստաթուղթ</span
+            >
+            <progress
+              data-bind="attr: { value: socCardUploader.loadedData, max: socCardUploader.totalData }, style: { display: socCardUploader.isUploadingStarted() ? '' : 'none' }"
+            ></progress>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" data-bind="disabled: !isEditable()">
+  <div class="col-lg-10 col-md-10 col-sm-12 actions">
+    <button
+      type="button"
+      data-bind="click: function() {saveData(null, false)}"
+      class="btn btn-default"
+    >
+      Հիշել
+    </button>
+    <button
+      type="button"
+      data-bind="click: function(){saveData(null, true)}"
+      class="btn btn-success"
+    >
+      Շարունակել
+    </button>
+  </div>
+</div>

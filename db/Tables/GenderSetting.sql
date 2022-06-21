@@ -1,0 +1,12 @@
+if exists (select * from sys.objects where name='GENDER_SETTING' and type='U')
+	drop table dbo.GENDER_SETTING
+GO
+
+CREATE TABLE dbo.GENDER_SETTING (
+	GENDER	bit	NOT NULL,
+	SCORE	int	NOT NULL
+)
+GO
+
+CREATE UNIQUE CLUSTERED INDEX iGENDER_SETTING1 ON dbo.GENDER_SETTING(GENDER)
+GO

@@ -1,0 +1,61 @@
+﻿    <div data-bind="with: model">
+        <div data-bind="disabled: !isEditable()">
+            <div class="clearfix"></div>
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <div class="form-group">
+                    <label for="text">Երկիր <span class="mandatory">*</span></label>
+                    <div class="customselect" data-bind="with: addressCountries">
+                        <select data-bind="options: items, optionsText: 'NAME', optionsValue: 'CODE', 
+                                           validationError: {value: $parent.validationErrors, propertyName: 'countryCode'},
+                                           delayBind: {waitUntil: items() && items().length, bind: 'value: $parent.countryCode'}"></select>
+                        <div class="busyIndicatorOverlay" data-bind="visible: !items.loaded()"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <div class="form-group">
+                    <label for="text">Մարզ <span class="mandatory">*</span></label>
+                    <div class="customselect" data-bind="with: states">
+                        <select data-bind="options: items, optionsText: 'NAME', optionsValue: 'CODE', 
+                                           validationError: {value: $parent.validationErrors, propertyName: 'stateCode'},
+                                           delayBind: {waitUntil: items() && items().length, bind: 'value: $parent.stateCode'}"></select>
+                        <div class="busyIndicatorOverlay" data-bind="visible: !items.loaded()"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <div class="form-group">
+                    <label for="text">Բնակավայր <span class="mandatory">*</span></label>
+                    <div class="customselect" data-bind="with: cities">
+                        <select data-bind="options: items, optionsText: 'NAME', optionsValue: 'CODE',
+                                            validationError: {value: $parent.validationErrors, propertyName: 'cityCode'},
+                                           delayBind: {waitUntil: items() && items().length, bind: 'value: $parent.cityCode'}"></select>
+                        <div class="busyIndicatorOverlay" data-bind="visible: !items.loaded()"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <div class="form-group">
+                    <label for="text">Փողոց <span class="mandatory">*</span></label>
+                    <input type="text" data-bind="event: { blur: (data, event) => { if($parent.validator) {$parent.validator.validate('streetName', data, event);}}},
+                           value: streetName,validationError: {value: validationErrors, propertyName: 'streetName'}" class="form-control">
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <div class="form-group">
+                    <label for="text">Տուն / Շենք <span class="mandatory">*</span></label>
+                    <input type="text" data-bind="event: { blur: (data, event) => { if($parent.validator) {$parent.validator.validate('buildingNumber', data, event);}}},
+                           value: buildingNumber,validationError: {value: validationErrors, propertyName: 'buildingNumber'}"
+                                                   class="form-control">
+                </div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <div class="form-group">
+                    <label for="text">Բնակարան</label>
+                    <input type="text" data-bind="event: { blur: (data, event) => { if($parent.validator) {$parent.validator.validate('apartmentNumber', data, event);}}},                                                  
+                           value: apartmentNumber,validationError: {value: validationErrors, propertyName: 'apartmentNumber'}" 
+                                                  class="form-control">
+                </div>
+            </div>
+        </div>
+    </div>

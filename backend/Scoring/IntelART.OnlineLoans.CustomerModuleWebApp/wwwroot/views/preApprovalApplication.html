@@ -1,0 +1,60 @@
+﻿<div class="tab-pane fade in" data-bind="disabled: !isEditable()">
+    <div class="" id="form">
+        <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-12">
+                <h2>Նոր հայտ</h2>
+                <div class="hint" data-bind="cnv-loanTypeHint: loanType"></div>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <div class="form-group">
+                    <label for="text">Վարկի տեսակ <span class="mandatory">*</span></label>
+                    <div class="customselect" data-bind="with: loanTypes">
+                        <select data-bind="options: items, optionsText: 'NAME', optionsValue: 'CODE',
+                                validationError: {value: $parent.validationErrors, propertyName: 'loanType'},
+                                delayBind: {waitUntil: items() && items().length, bind: 'value: $parent.loanType'}"></select>
+                        <div class="busyIndicatorOverlay" data-bind="visible: !items.loaded()"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-5 col-md-5 col-sm-12">
+                <div class="form-group">
+                    <label for="currency">Արժույթ <span class="mandatory">*</span></label>
+                    <div class="customselect" data-bind="with: currencies">
+                        <select data-bind="options: items, optionsText: 'NAME', optionsValue: 'CODE',
+                                validationError: {value: $parent.validationErrors, propertyName: 'currency'},
+                                delayBind: {waitUntil: items() && items().length, bind: 'value: $parent.currency'}"></select>
+                        <div class="busyIndicatorOverlay" data-bind="visible: !items.loaded()"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-10 col-md-10 col-sm-12">
+                <h2>Անձը հաստատող փաստաթուղթ</h2>
+            </div>
+            <id-document params="model: identificationDocument"></id-document>
+        </div>
+        <div id="loanSaveSubmitBtnsContainer">
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-12">
+                    <div class="checkbox">
+                        <label  class="customcheck checkbox">
+                            <input type="checkbox" data-bind="checked: agreedToTerms">
+                            Սույնով տալիս եմ իմ համաձայնությունը, որպեսզի "Կոնվերս Բանկ" ՓԲԸ-ն ցանկացած պահին, առանց իմ լրացուցիչ համաձայնության և ինձ նախօրոք տեղյակ պահելու, կատարի հարցումներ "ԱՔՌԱ Քրեդիտ Ռեփորթինգ" ՓԲԸ-ին և "Նորք սոցիալական ծառայությունների տեխնոլոգիական և իրազեկման կենտրոն" Հիմնադրամին և խնդրում վերջիններիս "Կոնվերս Բանկ" ՓԲԸ-ին տրամադրել իմ մասին տեղեկատվություն, մասնավորապես՝ ներկա և անցյալ ֆինանսական պարտավորությունների վերաբերյալ տեղեկություններ, անձնական տվյալներ, ինչպես նաև ցանկացած այլ տեղեկատվություն, որը կարող է հաշվի առնվել և կիրառվել "Կոնվերս Բանկ" ՓԲԸ կողմից ինձ հետ վարկային պայմանագիր կնքելու վերաբերյալ որոշում կայացնելիս:
+                            <span class="checkmark"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-10 col-md-10 col-sm-12 actions">
+                    <button type="button" data-bind="click: function(){$root.selectDefaultView();}" class="btn btn-default">Չեղարկել</button>
+                    <button type="button" data-bind="enable: agreedToTerms, click: function(){$parent.action('submit');}" class="btn btn-success">Շարունակել</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

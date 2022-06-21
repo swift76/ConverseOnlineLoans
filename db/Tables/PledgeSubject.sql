@@ -1,0 +1,17 @@
+﻿if exists (select * from sys.objects where name='PLEDGE_SUBJECT' and type='U')
+	drop table PLEDGE_SUBJECT
+GO
+
+CREATE TABLE PLEDGE_SUBJECT (
+	ID					int identity(1,1)	NOT NULL,
+	PLEDGE_ID			int					NOT NULL,
+	PLEDGE_SUBJECT_NAME	nvarchar(100)		NOT NULL,
+	AMOUNT				money				NOT NULL,
+	COUNT				money				NOT NULL
+)
+GO
+
+CREATE UNIQUE CLUSTERED INDEX iPLEDGE_SUBJECTS1 ON dbo.PLEDGE_SUBJECT(ID)
+GO
+CREATE INDEX iPLEDGE_SUBJECTS2 ON dbo.PLEDGE_SUBJECT(PLEDGE_ID)
+GO

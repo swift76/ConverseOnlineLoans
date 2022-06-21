@@ -1,0 +1,23 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>@ViewData["Title"]</title>
+    <!-- META -->
+    <meta charset="utf-8"/>
+    <meta name="robots" content="index,follow">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no shrink-to-fit=no">
+    <meta name="author" content="@ViewData["Meta.Author"]">
+    <link rel="icon" href="@ViewData["Link.FavIcon"]" type="image/x-icon">
+    <link rel="shortcut icon" href="@ViewData["Link.ShortcutIcon"]" type="image/x-icon">
+        <!-- Styles -->
+    <link rel="stylesheet" href="./css/libs.css" type="text/css"/>
+    <link rel="stylesheet" href="./css/style.css" type="text/css"/>
+    <!-- initialize main app js with require js -->
+    <script data-main="./scripts/app.js" src="./scripts/lib/require.js"></script>
+
+</head>
+<body>
+   @RenderBody()
+</body>
+</html>

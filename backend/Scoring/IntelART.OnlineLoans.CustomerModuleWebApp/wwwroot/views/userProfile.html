@@ -1,0 +1,55 @@
+﻿<div data-bind="{with: object}">
+    <div class="row">
+        <div class="col-lg-10 col-md-10 col-sm-12">
+            <h2>Անձնական տվյալներ</h2>
+        </div>
+        <english-name-surname params="model: $data"></english-name-surname>
+        <personal-details params="model: $data"></personal-details>
+        <citizenship-details params="model: $data"></citizenship-details>
+        <div class="col-lg-5 col-md-5 col-sm-12">
+            <div class="form-group">
+                <label for="text">Բջջային հեռախոս</label>
+                <div class="phonefield">
+                    <span class="country-code">374</span>
+                    <input placeholder="XX XXX XXX" data-bind="numericInput: {value: cellphone, isNumber: false}" type="text" disabled class="form-control" maxlength="8">
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-5 col-sm-12">
+            <div class="form-group">
+                <label for="email">Էլ. հասցե</label>
+                <input type="text" data-bind="value: email,
+                       validationError: {value: validationErrors, propertyName: 'email'}" class="form-control">
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-10 col-md-10 col-sm-12">
+            <h2>Անձը հաստատող փաստաթուղթ</h2>
+        </div>
+        <id-document params="model: identificationDocument"></id-document>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-10 col-md-10 col-sm-12">
+            <h2>Գրանցման հասցե</h2>
+        </div>
+        <address-details params="model: residentialAddress"></address-details>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-10 col-md-10 col-sm-12">
+            <h2>Բնակության հասցե</h2>
+        </div>
+        <address-details params="model: homeAddress"></address-details>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-10 col-md-10 col-sm-12 actions">
+            <button type="button" data-bind="click: function(){$root.selectDefaultView();}" class="btn btn-default">Չեղարկել</button>
+            <button type="button" data-bind="click: function(){ $parent.save(); }" class="btn btn-success">Հիշել</button>
+        </div>
+    </div>
+</div>
+<div class="busyIndicatorOverlay" data-bind="visible: !object.loaded() || isBusy()"></div>

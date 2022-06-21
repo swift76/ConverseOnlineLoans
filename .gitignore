@@ -1,0 +1,12 @@
+*.suo
+*.dbmdl
+*.jfm
+.vs
+*.user
+bin/
+obj/
+node_modules/
+packages/
+.DS_Store
+merged.sql
+/pub

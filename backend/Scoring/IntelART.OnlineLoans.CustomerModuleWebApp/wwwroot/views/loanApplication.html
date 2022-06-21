@@ -1,0 +1,16 @@
+﻿<div class="application">
+    <div id="loan">
+        <ul class="nav nav-tabs" data-bind="foreach: children">
+            <li data-bind="css: {active: $parent.isCurrentView($data), disabled: !isAccessible() }">
+               <a data-bind="click: function(){if(isAccessible()) {$parent.setCurrentView($data);}}" 
+                  href="#"><span class="stepnumber" data-bind="text: ($index() + 1)"></span>
+                  <span class="stepname" data-bind="localizedText: code"></span></a></li>
+        </ul>
+        <div class="tab-content app-content" data-bind="with: selectedStage">
+            <input type="hidden" id="currentEditing" />
+            <div data-bind="template: {name: $parent.viewTemplate, data: view}"></div>
+            <div class="busyIndicatorOverlay" data-bind="visible: !view.loaded() || isBusy"></div>
+        </div>
+
+    </div>
+</div>

@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>ConverseBank</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" type="image/x-icon" href="img/favicon.ico" />
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/default.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/custom.js"></script>
+</head>
+<body>
+
+<div class="wrapper">
+
+    <div class="container_fluid">
+
+        <header>
+            <a href="#" class="burger"></a>
+            <span class="close-menu"></span>
+            <a class="logo" href="index.html"><img src="img/logo.svg"></a>
+        </header>
+
+        <div class="sidebar">
+            <ul>
+                <li class="active"><a href="index.html"><span class="ico hayter"></span>Վարկի Հայտեր</a></li>
+                <li class="separator"></li>
+                <li><a href="resetpasspage.html"><span class="ico password"></span>Փոխել գաղտնաբառը</a></li>
+                <li><a href="login.html"><span class="ico logout"></span>Ելք համակարգից</a></li>
+            </ul>
+        </div>
+
+        <div class="content_body">
+            <div class="vizard">
+                <ul>
+                    <li class="current"><span class="step">1</span>Նոր վարկի հայտ</li>
+                    <li><span class="step">2</span>Վարկի տվյալներ</li>
+                    <li><span class="step">3</span>Պայմանագրի տվյալներ</li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+
+            <div class="content">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h1>Նոր վարկի հայտ</h1>
+
+                            <div class="form-group">
+                                <label for="">Վարկի տեսակ</label>
+                                <div class="customselect">
+                                    <select>
+                                        <option>Սպառողական</option>
+                                        <option>Սպառողական</option>
+                                        <option>Սպառողական</option>
+                                    </select>
+                                </div>
+                                <div class="loan-description">Ընտրված վարկի նկարագրություն</div>
+                            </div>
+
+                            <div class="tandem">
+                                <div class="form-group">
+                                    <label for="">Արժույթ</label>
+                                    <div class="customselect">
+                                        <select>
+                                            <option>AMD</option>
+                                            <option>RUR</option>
+                                            <option>USD</option>
+                                            <option>EUR</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <h2>Անձը հաստատող փաստաթղթի տվյալներ</h2>
+
+                            <div class="tandem">
+                                <div class="form-group">
+                                    <label for="">Անձը հաստատող փաստաթղթի տեսակ</label>
+                                    <div class="customselect">
+                                        <select>
+                                            <option>Անձնագիր</option>
+                                            <option>Սոց. քարտ</option>
+                                            <option>ID քարտ</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="">Փաստաթղթի համար</label>
+                                    <input type="text" class="form-control" id="">
+                                </div>
+                                <div class="clearfix"></div>
+                            </div>
+
+                            <div class="checkbox">
+                                <label class="customcheck"> Սույնով տալիս եմ իմ համաձայնությունը, որ “Կոնվերս Բանկ” ՓԲԸ-ի կողմից կատարվի “ԱՔՌԱ Քրեդիտ Ռեփորթինգ” ՓԲԸ-ին և վերջինիս խնդրում եմ  “Կոնվերս Բանկ” ՓԲԸ-ին տրամադրել իմ ներկա և անցյալ ֆինանսական պարտավորությունների վերաբերյալ տեղեկատվություններ, ինչպես նաև այլ տվյալներ, որոնք “Կոնվերս Բանկ” ՓԲԸ-ի կողմից կարող են հաշվի առնվել ինձ հետ վարկային պայմանգիր կնքելու վերաբերյալ որոշում կայացնելիս: “Կոնվերս Բանկ” ՓԲԸ-ն հարցում կատարի “Նորք տեղեկատվավերլուծական կենտրոն” ՓԲԸ-ին և խնդրում եմ վերջինիս տրամադրելիմ վերաբերյալ ցանկացած տեղեկատվություն, որը կարող է կիրառվել Բանկի կողմից:
+                                    <input type="checkbox" checked="checked">
+                                    <span class="checkmark"></span>
+                                </label>
+                            </div>
+
+                            <button class="btn btn-default">Չեղարկել</button>
+                            <button class="btn btn-success">Հաստատել</button>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<span class="overlay"></span>
+
+</body>
+</html>
