@@ -1,6 +1,10 @@
-create or alter procedure sp_GetIncomeSetting(@VALUE	money)
+create or alter procedure sp_GetIncomeSetting(
+	@SCORECARD_CODE	varchar(3)
+	,@VALUE			money
+)
 AS
 	select SCORE
 	from INCOME_SETTING
-	where @VALUE between VALUE_FROM and VALUE_TO
+	where SCORECARD_CODE=@SCORECARD_CODE
+		and @VALUE between VALUE_FROM and VALUE_TO
 GO

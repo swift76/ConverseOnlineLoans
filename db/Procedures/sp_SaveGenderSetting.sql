@@ -1,8 +1,9 @@
 create or alter procedure sp_SaveGenderSetting(
-	@GENDER	bit
-	,@SCORE	int
+	@SCORECARD_CODE	varchar(3)
+	,@GENDER		bit
+	,@SCORE			int
 )
 AS
-	insert into GENDER_SETTING(GENDER, SCORE)
-	values (@GENDER, @SCORE)
+	insert into GENDER_SETTING(SCORECARD_CODE, GENDER, SCORE)
+	values (@SCORECARD_CODE, @GENDER, @SCORE)
 GO
