@@ -27,5 +27,15 @@ namespace IntelART.CLRServices
         public int DUE_DAYS_4 { get; set; }
         public int DUE_DAYS_5 { get; set; }
         public DateTime? LAST_REPAYMENT_DATE { get; set; }
+        public int SUM_OVERDUE_DAYS_Y1_Y1 { get; set; }
+        public int MAX_OVERDUE_DAYS_Y1_Y1 { get; set; }
+        public int SUM_OVERDUE_DAYS_Y1_Y2 { get; set; }
+        public int MAX_OVERDUE_DAYS_Y1_Y2 { get; set; }
+        public int SUM_OVERDUE_DAYS_Y1_Y3 { get; set; }
+        public int MAX_OVERDUE_DAYS_Y1_Y3 { get; set; }
+        public int SUM_OVERDUE_DAYS_Y1_Y4 { get; set; }
+        public int MAX_OVERDUE_DAYS_Y1_Y4 { get; set; }
+        public int SUM_OVERDUE_DAYS_Y1_Y5 { get; set; }
+        public int MAX_OVERDUE_DAYS_Y1_Y5 { get; set; }
     }
 }

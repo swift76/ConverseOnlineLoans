@@ -1,0 +1,13 @@
+if exists (select * from sys.objects where name='FICO_SETTING_PARAMETER' and type='U')
+	drop table dbo.FICO_SETTING_PARAMETER
+GO
+
+CREATE TABLE dbo.FICO_SETTING_PARAMETER (
+	PAYMENT_HISTORY_YEAR	tinyint	NOT NULL,
+	HAD_LOAN_YEAR			tinyint	NOT NULL,
+	NEW_LOAN_MONTH			tinyint	NOT NULL,
+	NEW_QUERY_MONTH			tinyint	NOT NULL,
+	NEW_RATIO_MONTH			tinyint	NOT NULL,
+	NON_BANK_INTEREST		money	NOT NULL
+)
+GO

@@ -158,12 +158,23 @@ namespace IntelART.CLRServices
                 tableDetails.Columns.Add("DUE_DAYS_4", typeof(int));
                 tableDetails.Columns.Add("DUE_DAYS_5", typeof(int));
                 tableDetails.Columns.Add("LAST_REPAYMENT_DATE", typeof(DateTime));
+                tableDetails.Columns.Add("SUM_OVERDUE_DAYS_Y1_Y1", typeof(int));
+                tableDetails.Columns.Add("MAX_OVERDUE_DAYS_Y1_Y1", typeof(int));
+                tableDetails.Columns.Add("SUM_OVERDUE_DAYS_Y1_Y2", typeof(int));
+                tableDetails.Columns.Add("MAX_OVERDUE_DAYS_Y1_Y2", typeof(int));
+                tableDetails.Columns.Add("SUM_OVERDUE_DAYS_Y1_Y3", typeof(int));
+                tableDetails.Columns.Add("MAX_OVERDUE_DAYS_Y1_Y3", typeof(int));
+                tableDetails.Columns.Add("SUM_OVERDUE_DAYS_Y1_Y4", typeof(int));
+                tableDetails.Columns.Add("MAX_OVERDUE_DAYS_Y1_Y4", typeof(int));
+                tableDetails.Columns.Add("SUM_OVERDUE_DAYS_Y1_Y5", typeof(int));
+                tableDetails.Columns.Add("MAX_OVERDUE_DAYS_Y1_Y5", typeof(int));
                 for (int i = 0; i < result.Details.Count; i++)
                     if (result.Details[i].CUR.Length == 3)
                         tableDetails.Rows.Add(result.Details[i].STATUS, result.Details[i].FROM_DATE, result.Details[i].TO_DATE, result.Details[i].TYPE
                         , result.Details[i].CUR, result.Details[i].CONTRACT_AMOUNT, result.Details[i].DEBT, result.Details[i].PAST_DUE_DATE, result.Details[i].RISK, result.Details[i].CLASSIFICATION_DATE
                         , result.Details[i].INTEREST_RATE, result.Details[i].PLEDGE, result.Details[i].PLEDGE_AMOUNT, result.Details[i].OUTSTANDING_AMOUNT, result.Details[i].OUTSTANDING_PERCENT
-                        , result.Details[i].BANK_NAME, result.Details[i].IS_GUARANTEE, result.Details[i].DUE_DAYS_1, result.Details[i].DUE_DAYS_2, result.Details[i].DUE_DAYS_3, result.Details[i].DUE_DAYS_4, result.Details[i].DUE_DAYS_5, result.Details[i].LAST_REPAYMENT_DATE);
+                        , result.Details[i].BANK_NAME, result.Details[i].IS_GUARANTEE, result.Details[i].DUE_DAYS_1, result.Details[i].DUE_DAYS_2, result.Details[i].DUE_DAYS_3, result.Details[i].DUE_DAYS_4, result.Details[i].DUE_DAYS_5, result.Details[i].LAST_REPAYMENT_DATE
+                        , result.Details[i].SUM_OVERDUE_DAYS_Y1_Y1, result.Details[i].MAX_OVERDUE_DAYS_Y1_Y1, result.Details[i].SUM_OVERDUE_DAYS_Y1_Y2, result.Details[i].MAX_OVERDUE_DAYS_Y1_Y2, result.Details[i].SUM_OVERDUE_DAYS_Y1_Y3, result.Details[i].MAX_OVERDUE_DAYS_Y1_Y3, result.Details[i].SUM_OVERDUE_DAYS_Y1_Y4, result.Details[i].MAX_OVERDUE_DAYS_Y1_Y4, result.Details[i].SUM_OVERDUE_DAYS_Y1_Y5, result.Details[i].MAX_OVERDUE_DAYS_Y1_Y5);
                 cmd.Parameters.AddWithValue("@DETAILS", tableDetails).SqlDbType = SqlDbType.Structured;
 
                 DataTable tableQueries = new DataTable("ACRAQueryResultQueries");

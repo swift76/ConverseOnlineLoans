@@ -151,7 +151,17 @@ namespace IntelART.CLRServices
                     DUE_DAYS_3 = dueDays3,
                     DUE_DAYS_4 = dueDays4,
                     DUE_DAYS_5 = dueDays5,
-                    LAST_REPAYMENT_DATE = dateLastPayment
+                    LAST_REPAYMENT_DATE = dateLastPayment,
+                    SUM_OVERDUE_DAYS_Y1_Y1 = ServiceHelper.RetrieveOptionalCount(node, "OverdueDays1-12"),
+                    MAX_OVERDUE_DAYS_Y1_Y1 = ServiceHelper.RetrieveOptionalCount(node, "MaxOverdueDays1-12"),
+                    SUM_OVERDUE_DAYS_Y1_Y2 = ServiceHelper.RetrieveOptionalCount(node, "OverdueDays1-24"),
+                    MAX_OVERDUE_DAYS_Y1_Y2 = ServiceHelper.RetrieveOptionalCount(node, "MaxOverdueDays1-24"),
+                    SUM_OVERDUE_DAYS_Y1_Y3 = ServiceHelper.RetrieveOptionalCount(node, "OverdueDays1-36"),
+                    MAX_OVERDUE_DAYS_Y1_Y3 = ServiceHelper.RetrieveOptionalCount(node, "MaxOverdueDays1-36"),
+                    SUM_OVERDUE_DAYS_Y1_Y4 = ServiceHelper.RetrieveOptionalCount(node, "OverdueDays1-48"),
+                    MAX_OVERDUE_DAYS_Y1_Y4 = ServiceHelper.RetrieveOptionalCount(node, "MaxOverdueDays1-48"),
+                    SUM_OVERDUE_DAYS_Y1_Y5 = ServiceHelper.RetrieveOptionalCount(node, "OverdueDays1-60"),
+                    MAX_OVERDUE_DAYS_Y1_Y5 = ServiceHelper.RetrieveOptionalCount(node, "MaxOverdueDays1-60")
                 });
             }
         }

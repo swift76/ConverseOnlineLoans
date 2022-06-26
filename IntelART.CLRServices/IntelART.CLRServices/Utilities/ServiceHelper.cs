@@ -235,5 +235,14 @@ namespace IntelART.CLRServices
 
             return responseText;
         }
+
+        public static int RetrieveOptionalCount(XmlNode node, string nodeName)
+        {
+            int count = 0;
+            XmlNode foundNode = node.SelectSingleNode(nodeName);
+            if (foundNode != null)
+                int.TryParse(RetrieveValue(foundNode.InnerXml), out count);
+            return count;
+        }
     }
 }
