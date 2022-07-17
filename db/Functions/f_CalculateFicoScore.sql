@@ -1,4 +1,4 @@
-﻿create function dbo.f_CalculateFicoScore(@APPLICATION_ID	uniqueidentifier)
+﻿create or alter function dbo.f_CalculateFicoScore(@APPLICATION_ID	uniqueidentifier)
 RETURNS int
 AS
 BEGIN
@@ -80,7 +80,7 @@ BEGIN
 	from ACRA_QUERY_RESULT_DETAILS with (nolock)
 	where APPLICATION_ID=@APPLICATION_ID
 		and IS_GUARANTEE=0
-		and upper(trim(STATUS))=N'ԳՈՐԾՈՂ'
+		and upper(rtrim(ltrim(STATUS)))=N'ԳՈՐԾՈՂ'
 
 	if @TotalContractAmount>0
 		set @DebtContractRatio=100*@TotalDebt/@TotalContractAmount
@@ -103,7 +103,7 @@ BEGIN
 	from ACRA_QUERY_RESULT_DETAILS with (nolock)
 	where APPLICATION_ID=@APPLICATION_ID
 		and IS_GUARANTEE=0
-		and upper(trim(STATUS))=N'ԳՈՐԾՈՂ'
+		and upper(rtrim(ltrim(STATUS)))=N'ԳՈՐԾՈՂ'
 		and INTEREST_RATE>@NON_BANK_INTEREST
 
 	if @TotalLoanCount>0
@@ -164,7 +164,7 @@ BEGIN
 	select @NewQueryCount=count(*)
 	from ACRA_QUERY_RESULT_QUERIES with (nolock)
 	where APPLICATION_ID=@APPLICATION_ID
-		and upper(trim(REASON))=N'ՆՈՐ ՎԱՐԿԱՅԻՆ ԴԻՄՈՒՄ'
+		and upper(rtrim(ltrim(REASON)))=N'ՆՈՐ ՎԱՐԿԱՅԻՆ ԴԻՄՈՒՄ'
 		and DATE>=@FromDate
 	group by DATE,BANK_NAME
 
@@ -186,7 +186,7 @@ BEGIN
 	select @NewQueryCount=count(*)
 	from ACRA_QUERY_RESULT_QUERIES with (nolock)
 	where APPLICATION_ID=@APPLICATION_ID
-		and upper(trim(REASON))=N'ՆՈՐ ՎԱՐԿԱՅԻՆ ԴԻՄՈՒՄ'
+		and upper(rtrim(ltrim(REASON)))=N'ՆՈՐ ՎԱՐԿԱՅԻՆ ԴԻՄՈՒՄ'
 		and DATE>=@FromDate
 	group by DATE,BANK_NAME
 

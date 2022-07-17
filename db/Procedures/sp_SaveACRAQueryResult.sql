@@ -33,7 +33,7 @@ AS
 		select @APPLICATION_ID,DATE,BANK_NAME,REASON
 			from @QUERIES
 
-		if trim(isnull(@FICO_SCORE,''))=''
+		if rtrim(ltrim(isnull(@FICO_SCORE,'')))=''
 			select @FICO_SCORE=convert(varchar(3),dbo.f_CalculateFicoScore(@APPLICATION_ID))
 
 		insert into dbo.ACRA_QUERY_RESULT
